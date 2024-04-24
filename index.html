@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Michael Borck">
+<meta name="dcterms.date" content="2024-04-24">
+<meta name="keywords" content="Prompt Engineering, Large Language Models (LLMs), Programming Paradigm, Application Development, Empirical Techniques">
+
+<title>Revisiting Prompt Engineering: Strategic Interactions with Large Language Models for Application Development</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+
+
+<meta name="citation_title" content="Revisiting Prompt Engineering: Strategic Interactions with Large Language Models for Application Development">
+<meta name="citation_abstract" content="Prompt engineering has emerged as a crucial technique for leveraging the capabilities of large language models (LLMs) in application development. This paper explores the nuances of prompt engineering, presenting it not merely as a tool for interaction but as a programming paradigm that significantly eases the deployment of LLM capabilities into practical applications. We examine various levels and strategies of prompt engineering, highlighting their practical implications and potential for simplifying complex tasks.
+">
+<meta name="citation_keywords" content="Prompt Engineering,Large Language Models (LLMs),Programming Paradigm,Application Development,Empirical Techniques">
+<meta name="citation_author" content="Michael Borck">
+<meta name="citation_publication_date" content="2024-04-24">
+<meta name="citation_cover_date" content="2024-04-24">
+<meta name="citation_year" content="2024">
+<meta name="citation_online_date" content="2024-04-24">
+<meta name="citation_language" content="en">
+<meta name="citation_journal_title" content="BARG Curtin University">
+<meta name="citation_reference" content="citation_title=Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands);,citation_author=José Marrero;,citation_author=Alicia García;,citation_author=Manuel Berrocoso;,citation_author=Ángeles Llinares;,citation_author=Antonio Rodríguez-Losada;,citation_author=R. Ortiz;,citation_publication_date=2019-07;,citation_cover_date=2019-07;,citation_year=2019;,citation_doi=10.1186/s13617-019-0085-5;,citation_volume=8;,citation_journal_title=Journal of Applied Volcanology;">
+</head>
+
+<body>
+
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Revisiting Prompt Engineering: Strategic Interactions with Large Language Models for Application Development</h1>
+          </div>
+
+    
+    <div class="quarto-title-meta-container">
+      <div class="quarto-title-meta-column-start">
+            <div class="quarto-title-meta-author">
+          <div class="quarto-title-meta-heading">Author</div>
+          <div class="quarto-title-meta-heading">Affiliation</div>
+          
+                <div class="quarto-title-meta-contents">
+            <p class="author">Michael Borck <a href="mailto:michael.borck@curtin.edu.au" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-0950-6396" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Curtin University
+                      </p>
+                  </div>
+                    </div>
+        
+        <div class="quarto-title-meta">
+
+                      
+                <div>
+            <div class="quarto-title-meta-heading">Published</div>
+            <div class="quarto-title-meta-contents">
+              <p class="date">April 24, 2024</p>
+            </div>
+          </div>
+          
+                
+              </div>
+      </div>
+      <div class="quarto-title-meta-column-end quarto-other-formats-target">
+      <div class="quarto-alternate-formats"><div class="quarto-title-meta-heading">Other Formats</div><div class="quarto-title-meta-contents"><p><a href="index.docx"><i class="bi bi-file-word"></i>MS Word</a></p></div><div class="quarto-title-meta-contents"><p><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF (agu)</a></p></div><div class="quarto-title-meta-contents"><p><a href="index-meca.zip" data-meca-link="true"><i class="bi bi-archive"></i>MECA Bundle</a></p></div></div></div>
+    </div>
+
+    <div>
+      <div class="abstract">
+        <div class="block-title">Abstract</div>
+        <p>Prompt engineering has emerged as a crucial technique for leveraging the capabilities of large language models (LLMs) in application development. This paper explores the nuances of prompt engineering, presenting it not merely as a tool for interaction but as a programming paradigm that significantly eases the deployment of LLM capabilities into practical applications. We examine various levels and strategies of prompt engineering, highlighting their practical implications and potential for simplifying complex tasks.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="keywords">
+        <div class="block-title">Keywords</div>
+        <p>Prompt Engineering, Large Language Models (LLMs), Programming Paradigm, Application Development, Empirical Techniques</p>
+      </div>
+    </div>
+
+    <div class="quarto-other-links-text-target">
+    </div>  </div>
+</header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#prompt-engineering-a-dual-level-analysis" id="toc-prompt-engineering-a-dual-level-analysis" class="nav-link" data-scroll-target="#prompt-engineering-a-dual-level-analysis"><span class="header-section-number">2</span> Prompt Engineering: A Dual-Level Analysis</a></li>
+  <li><a href="#methodology-empirical-techniques-in-prompt-engineering" id="toc-methodology-empirical-techniques-in-prompt-engineering" class="nav-link" data-scroll-target="#methodology-empirical-techniques-in-prompt-engineering"><span class="header-section-number">3</span> Methodology: Empirical Techniques in Prompt Engineering</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="header-section-number">4</span> Results</a>
+  <ul class="collapse">
+  <li><a href="#overview-of-experimental-results" id="toc-overview-of-experimental-results" class="nav-link" data-scroll-target="#overview-of-experimental-results"><span class="header-section-number">4.1</span> Overview of Experimental Results</a></li>
+  <li><a href="#detailed-examples-of-good-vs.-poor-prompts" id="toc-detailed-examples-of-good-vs.-poor-prompts" class="nav-link" data-scroll-target="#detailed-examples-of-good-vs.-poor-prompts"><span class="header-section-number">4.2</span> Detailed Examples of Good vs.&nbsp;Poor Prompts</a></li>
+  <li><a href="#comparative-analysis" id="toc-comparative-analysis" class="nav-link" data-scroll-target="#comparative-analysis"><span class="header-section-number">4.3</span> Comparative Analysis</a></li>
+  <li><a href="#python-implementation-example-for-rouge-l" id="toc-python-implementation-example-for-rouge-l" class="nav-link" data-scroll-target="#python-implementation-example-for-rouge-l"><span class="header-section-number">4.4</span> Python Implementation Example for ROUGE-L</a></li>
+  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation"><span class="header-section-number">4.5</span> Explanation</a></li>
+  <li><a href="#usage-considerations" id="toc-usage-considerations" class="nav-link" data-scroll-target="#usage-considerations"><span class="header-section-number">4.6</span> Usage Considerations</a></li>
+  <li><a href="#using-bertscore-without-a-predefined-reference" id="toc-using-bertscore-without-a-predefined-reference" class="nav-link" data-scroll-target="#using-bertscore-without-a-predefined-reference"><span class="header-section-number">4.7</span> Using BERTscore without a Predefined Reference</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">4.8</span> Interpretation</a></li>
+  <li><a href="#considerations" id="toc-considerations" class="nav-link" data-scroll-target="#considerations"><span class="header-section-number">4.9</span> Considerations</a></li>
+  </ul></li>
+  <li><a href="#case-study-building-an-automatic-grader" id="toc-case-study-building-an-automatic-grader" class="nav-link" data-scroll-target="#case-study-building-an-automatic-grader"><span class="header-section-number">5</span> Case Study: Building an Automatic Grader</a></li>
+  <li><a href="#discussion-efficacy-and-limitations-of-prompt-engineering" id="toc-discussion-efficacy-and-limitations-of-prompt-engineering" class="nav-link" data-scroll-target="#discussion-efficacy-and-limitations-of-prompt-engineering"><span class="header-section-number">6</span> Discussion: Efficacy and Limitations of Prompt Engineering</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7</span> Conclusion</a></li>
+  <li><a href="#future-work" id="toc-future-work" class="nav-link" data-scroll-target="#future-work"><span class="header-section-number">8</span> Future Work</a>
+  <ul class="collapse">
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">8.1</span> References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+  
+
+
+<section id="introduction" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
+<p>The advent of large language models (LLMs) such as OpenAI’s GPT series has heralded a significant shift in the paradigms of programming and computational linguistics. Traditionally, the interaction with these models involved substantial coding efforts and a deep understanding of machine learning algorithms. However, a more accessible approach has surfaced, known as prompt engineering, which allows even those with minimal coding expertise to leverage the advanced capabilities of LLMs effectively. This paper delves into prompt engineering, defined as the strategic formulation of input prompts to maximize the utility of LLMs without internal model retraining. We argue that prompt engineering is an underappreciated yet powerful tool for developers, capable of achieving substantial outcomes with minimal effort.</p>
+<p>Prompt engineering is defined as the strategic formulation of input queries to maximize the utility and accuracy of responses from LLMs. Initially perceived with skepticism, this methodology has quickly proven its worth, demonstrating that a well-crafted prompt can extract considerable value from these models with relatively low effort. The essence of prompt engineering lies not in rewriting the underlying algorithms of LLMs but in creatively interacting with them, using plain language to “program” or guide the models towards desired outputs.</p>
+<p>The primary objective of this paper is to systematically explore and validate the effectiveness of various prompt engineering techniques. By comparing the performance of “good” versus “poor” prompts, this research aims to elucidate the impact of prompt construction on the quality of responses generated by LLMs. We employ a series of metrics, such as BERTscore and Perplexity, to quantitatively assess the responses, providing a rigorous analysis of how different prompting strategies affect the output of language models. This comparative study is intended to offer valuable insights for both developers and researchers, enabling them to harness the full potential of LLMs in diverse applications ranging from automated content generation to complex problem-solving tasks.</p>
+<p>This paper includes embedded interactive elements that allow readers to directly engage with and replicate our computational analyses. By providing live data and code within the document, we aim to enhance transparency and applicability of our findings. It allows readers to not only digest the findings but also interact with the presented data and analyses, potentially replicating or building upon the research in real-time. This integration promises to bridge the gap between theoretical exploration and practical application, making the research accessible and applicable to a broad audience interested in the future of artificial intelligence and machine learning.</p>
+</section>
+<section id="prompt-engineering-a-dual-level-analysis" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="prompt-engineering-a-dual-level-analysis"><span class="header-section-number">2</span> Prompt Engineering: A Dual-Level Analysis</h2>
+<p>Prompt engineering operates at two distinct levels. The first, an intuitive and straightforward approach, utilizes platforms like ChatGPT to execute simple tasks (e.g., text summarization, email drafting). Although this method is accessible, its integration into larger systems is non-trivial. The second level involves a more sophisticated interaction through programming interfaces, such as Python APIs, enabling the integration of LLM responses into broader software ecosystems. This paper illustrates these levels with practical examples, including the development of an LLM-powered automatic grading system for educational applications.</p>
+</section>
+<section id="methodology-empirical-techniques-in-prompt-engineering" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="methodology-empirical-techniques-in-prompt-engineering"><span class="header-section-number">3</span> Methodology: Empirical Techniques in Prompt Engineering</h2>
+<p>We categorize prompt engineering as an empirical art, where the composition and formatting of prompts are tailored to enhance model performance on specific tasks. This approach draws on the inherent desire of language models to complete text-based tasks, effectively “tricking” them into performing complex functions beyond simple text generation. We outline various techniques, such as the use of descriptive language, structured prompts, and the chaining of thought processes, to improve the interaction quality with LLMs.</p>
+<p>This study systematically investigates the impact of prompt engineering on the performance of large language models (LLMs). Our approach involves comparing the efficacy of well-crafted (“good”) prompts against less optimized (“poor”) prompts in eliciting accurate and relevant responses from the models. We detail the experimental design, tools utilized, and metrics applied for evaluating the results.</p>
+<section id="experimental-design" class="level4" data-number="3.0.1">
+<h4 data-number="3.0.1" class="anchored" data-anchor-id="experimental-design"><span class="header-section-number">3.0.1</span> Experimental Design</h4>
+<p>The experiments are structured to assess two main types of prompts:</p>
+<ol type="1">
+<li><p><strong>Good Prompts</strong>: These are designed with specific linguistic and structural techniques believed to enhance the LLM’s understanding and response quality. Techniques include using descriptive language, structuring content, and employing contextual cues that guide the model towards the desired type of response.</p></li>
+<li><p><strong>Poor Prompts</strong>: These lack the strategic elements present in good prompts and typically include vague or ambiguous language that may lead to less accurate or relevant responses from the model.</p></li>
+</ol>
+<p>For each type of prompt, identical tasks are presented to the LLM to ensure that the only variable affecting output quality is the prompt construction itself. Tasks include generating text-based responses across several domains, such as summarizing passages, answering questions, and creating content based on given specifications.</p>
+</section>
+<section id="tools-and-models" class="level4" data-number="3.0.2">
+<h4 data-number="3.0.2" class="anchored" data-anchor-id="tools-and-models"><span class="header-section-number">3.0.2</span> Tools and Models</h4>
+<p>The study utilizes OpenAI’s GPT-3 model due to its widespread adoption and robust performance across a variety of natural language processing tasks. We interact with GPT-3 using the following tools:</p>
+<ul>
+<li><p><strong>LangChain</strong>: A Python library designed to facilitate the development of applications on top of LLMs. LangChain allows for structured interaction with GPT-3, managing prompt templates, and integrating response parsing mechanisms.</p></li>
+<li><p><strong>Quarto</strong>: To document and share our findings, we use Quarto, an interactive computing framework that allows embedding live code, visualizations, and narrative text. This choice supports the dynamic presentation of our methods and results, enabling readers to engage directly with the analyses.</p></li>
+</ul>
+</section>
+<section id="metrics-for-evaluation" class="level4" data-number="3.0.3">
+<h4 data-number="3.0.3" class="anchored" data-anchor-id="metrics-for-evaluation"><span class="header-section-number">3.0.3</span> Metrics for Evaluation</h4>
+<p>To objectively evaluate the quality of the responses generated by the LLM under different prompting conditions, we employ several metrics:</p>
+<ol type="1">
+<li><p><strong>BERTscore</strong>: This metric computes the semantic similarity between the generated text and a set of reference texts. It is used to assess how well the content produced by the LLM aligns with expected outputs in terms of meaning and context.</p></li>
+<li><p><strong>Perplexity</strong>: Typically used to measure how well a probability model predicts a sample, perplexity in our context helps determine how “surprised” the model is by the responses it generates, which indirectly indicates the naturalness and fluency of the text.</p></li>
+<li><p><strong>Manual Review</strong>: To complement automated metrics, responses are also subjectively evaluated by human reviewers for relevance, coherence, and informativeness. This step ensures that our findings account for qualitative aspects of text generation that automated metrics may overlook.</p></li>
+</ol>
+</section>
+<section id="data-collection-and-analysis" class="level4" data-number="3.0.4">
+<h4 data-number="3.0.4" class="anchored" data-anchor-id="data-collection-and-analysis"><span class="header-section-number">3.0.4</span> Data Collection and Analysis</h4>
+<p>Responses from the LLM are collected under controlled conditions to ensure consistency across tests. Each response is logged along with the prompt used, allowing for detailed comparative analysis. The data are analyzed using statistical tools to identify significant differences in performance metrics between good and poor prompts. Visualizations are created to illustrate these differences clearly, providing both quantitative and qualitative insights into the effectiveness of various prompt engineering techniques.</p>
+</section>
+<section id="comparative-approach" class="level4" data-number="3.0.5">
+<h4 data-number="3.0.5" class="anchored" data-anchor-id="comparative-approach"><span class="header-section-number">3.0.5</span> Comparative Approach</h4>
+<p>To evaluate the quality of prompts we treat the responses as references for each other. This can be an effective way to highlight which prompt elicits a more informative or relevant response on a given topic. Here’s how we implement this approach:</p>
+<ol type="1">
+<li>Define a topic or question you want to ask ChatGPT.</li>
+<li>Craft two different prompts for the same topic - one that you consider a “poor” or suboptimal prompt, and one that you think is a “good” or well-designed prompt.</li>
+<li>Provide both prompts to ChatGPT and obtain the responses.</li>
+<li>Treat the response from the “good” prompt as the reference, and evaluate the response from the “poor” prompt against it using metrics like:
+<ul>
+<li>BERTScore: Calculate semantic similarity between the two responses using contextual embeddings.[1]</li>
+<li>ROUGE/BLEU: Measure n-gram overlap between the responses.[2]</li>
+<li>Human evaluation: Have human raters judge which response is more informative, relevant, and coherent.</li>
+</ul></li>
+<li>Repeat the process, treating the response from the “poor” prompt as the reference, and evaluate the “good” prompt’s response against it.</li>
+</ol>
+<p>By comparing the responses in this way, we identify which prompt leads to a more desirable output. A higher BERTScore, ROUGE, or BLEU score when using one response as the reference would indicate that the corresponding prompt produced a more relevant and informative response.[1][2][4]</p>
+<p>Additionally, human evaluation can provide valuable qualitative insights into the strengths and weaknesses of each prompt, complementing the quantitative metrics.</p>
+<p>This comparative approach leverages the fact that for the same topic, a well-crafted prompt should elicit a more relevant and high-quality response from the language model. By directly comparing the responses, you can empirically evaluate the effectiveness of your prompt engineering efforts.[1][2][4][5]</p>
+<p>Citations: [1] https://quaintitative.com/compare-llms/ [2] https://andrewmaynard.net/comparative-prompts/ [3] https://www.vcestudyguides.com/blog/the-five-types-of-text-response-prompts-archive [4] https://agio.com/comparing-ai-prompting-strategies/ [5] https://typeset.io/questions/how-do-different-types-of-prompts-affect-the-quality-of-2rmbjrcisy</p>
+<p>Through this comprehensive methodology, the study aims to provide actionable insights into the art of prompt engineering, guiding users on how to best utilize LLMs for a range of applications.</p>
+<p>Even without a predefined reference text, you can still compare the responses from a good prompt and a poor prompt using metrics like BERTScore or BLEU score. Here’s how you can approach this:</p>
+<ol type="1">
+<li>Obtain responses from the language model using both the good prompt and the poor prompt.</li>
+<li>Treat the response from the good prompt as the “reference” text and the response from the poor prompt as the “candidate” text.</li>
+<li>Calculate the BERTScore or BLEU score between the reference (good prompt response) and candidate (poor prompt response).</li>
+<li>Repeat the process by treating the poor prompt response as the reference and the good prompt response as the candidate.</li>
+<li>Compare the scores in both directions to see which prompt elicited a response that is more similar/dissimilar to the other.</li>
+</ol>
+<p>For BERTScore: - A higher BERTScore when using the good prompt response as reference indicates the poor prompt response is more semantically similar to the desired response.[1][4] - You can calculate BERTScore F1, precision, and recall to get a more nuanced comparison.</p>
+<p>For BLEU score: - A higher BLEU score when using the good prompt response as reference suggests the poor prompt response has more n-gram overlap with the desired response.[5] - BLEU is based on precise word matching, so it may not fully capture semantic similarities.</p>
+<p>This comparative approach lets you evaluate prompt quality without an external reference, by treating one prompt’s response as the target output.[1][4][5]</p>
+<p>Additionally, you can complement the metrics with human evaluation by having raters judge which response is more coherent, relevant and informative for the given topic.[1][4]</p>
+<p>The key advantage is directly comparing the outputs from different prompts to assess which one yields a more desirable response from the language model.[1][4][5]</p>
+<p>Citations: [1] https://arxiv.org/pdf/2305.12421.pdf [2] https://www.vcestudyguides.com/blog/the-five-types-of-text-response-prompts-archive [3] https://quaintitative.com/compare-llms/ [4] https://aclanthology.org/2021.wmt-1.59.pdf [5] https://aclanthology.org/P02-1040.pdf</p>
+</section>
+</section>
+<section id="results" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="results"><span class="header-section-number">4</span> Results</h2>
+<p>This section presents the comprehensive results of our investigation into the effectiveness of prompt engineering techniques for enhancing the performance of large language models (LLMs). Our analysis focuses on quantitatively evaluating the impact of well-constructed versus poorly constructed prompts on the quality of the responses generated by LLMs. We utilize three established metrics for this evaluation: BLEU Score, ROUGE Score, and BERTscore, each providing insights into different aspects of text quality such as precision, recall, and semantic similarity. The results clearly demonstrate the significant influence that prompt construction can have on the accuracy, relevance, and fluency of the generated text. Additionally, we provide detailed, interactive examples that not only illustrate these effects but also allow readers to explore the nuances of prompt engineering through live code. These examples showcase practical applications and underscore the practical implications of our findings, bridging theoretical research with actionable insights. Through dynamic visualizations and interactive Quarto cells, readers are invited to engage directly with the data, enhancing their understanding of how strategic prompt design can be effectively utilized in real-world applications.</p>
+<section id="overview-of-experimental-results" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="overview-of-experimental-results"><span class="header-section-number">4.1</span> Overview of Experimental Results</h3>
+<ul>
+<li>Begin with a summary of the findings from the comparative analysis of good vs.&nbsp;poor prompts. This would involve presenting quantitative data from BERTscore, Perplexity, and manual reviews.</li>
+<li>Include charts, graphs, or tables that clearly depict the differences in LLM performance based on the type of prompt used.</li>
+<li>Compare the outputs and effectiveness of the LLM across different prompting techniques illustrated in the detailed examples and the case study. This section would analyze the broader implications of prompt engineering on practical applications.</li>
+<li>Discuss how variations in prompt construction can lead to significant differences in output quality and application functionality.</li>
+</ul>
+</section>
+<section id="detailed-examples-of-good-vs.-poor-prompts" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="detailed-examples-of-good-vs.-poor-prompts"><span class="header-section-number">4.2</span> Detailed Examples of Good vs.&nbsp;Poor Prompts</h3>
+<p>This section provides detailed descriptions and Python code examples for various prompt engineering tricks used to enhance the performance of large language models (LLMs). Each strategy is designed to optimize the interaction with LLMs in different contexts, demonstrating practical applications and potential benefits.</p>
+<section id="strategy-1-be-descriptive-more-is-better" class="level4" data-number="4.2.1">
+<h4 data-number="4.2.1" class="anchored" data-anchor-id="strategy-1-be-descriptive-more-is-better"><span class="header-section-number">4.2.1</span> Strategy 1: Be Descriptive (More is Better)</h4>
+<p><strong>Explanation</strong>: Providing detailed information within prompts helps the LLM understand the context better, leading to more accurate and relevant responses. This strategy is particularly useful in scenarios where the details are critical to the task, such as generating personalized content or specific instructions.</p>
+<p><strong>Python Code Example</strong>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the OpenAI GPT library</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openai <span class="im">import</span> ChatCompletion</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the model with your API key</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>openai_api_key <span class="op">=</span> <span class="st">'your-api-key'</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>chat_model <span class="op">=</span> ChatCompletion(api_key<span class="op">=</span>openai_api_key, model<span class="op">=</span><span class="st">"gpt-3.5-turbo"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a detailed prompt for a birthday message</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">Write a birthday message for my dad. He is turning 60 years old, loves golf, enjoys classical music, and appreciates good humor. The message should be heartfelt and include a joke about getting older.</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the message using the detailed prompt</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> chat_model.create(</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    messages<span class="op">=</span>[{<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: prompt}]</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response[<span class="st">'choices'</span>][<span class="dv">0</span>][<span class="st">'message'</span>][<span class="st">'content'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="strategy-2-give-examples-few-shot-learning" class="level4" data-number="4.2.2">
+<h4 data-number="4.2.2" class="anchored" data-anchor-id="strategy-2-give-examples-few-shot-learning"><span class="header-section-number">4.2.2</span> Strategy 2: Give Examples (Few-Shot Learning)</h4>
+<p><strong>Explanation</strong>: Demonstrating desired outputs through examples can significantly improve model performance, especially in tasks requiring specific formats or styles. This strategy is beneficial in educational settings, content creation, or anywhere model guidance through exemplars can enhance output relevancy.</p>
+<p><strong>Python Code Example</strong>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a prompt with examples for writing subtitles</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="st">Given the title of a blog post, write a subtitle that captures the essence of the article.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">Title: Advances in Renewable Energy</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="st">Subtitle: Exploring the latest breakthroughs in sustainable power sources</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="st">Title: The Future of AI in Medicine</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="st">Subtitle: How AI is revolutionizing diagnostics and patient care</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="st">Title: Innovations in Educational Technology</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="st">Subtitle: New tools that are transforming how students learn</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="st">Title: The Role of Genetics in Public Health</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="st">Subtitle: </span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a subtitle for a new article</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> chat_model.create(</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    messages<span class="op">=</span>[{<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: prompt}]</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response[<span class="st">'choices'</span>][<span class="dv">0</span>][<span class="st">'message'</span>][<span class="st">'content'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="strategy-3-use-structured-text" class="level4" data-number="4.2.3">
+<h4 data-number="4.2.3" class="anchored" data-anchor-id="strategy-3-use-structured-text"><span class="header-section-number">4.2.3</span> Strategy 3: Use Structured Text</h4>
+<p><strong>Explanation</strong>: Structuring prompts in a clear and organized manner can help the model parse and process the information more effectively. This approach is ideal for tasks that require data extraction, summarization, or any application where clarity and precision are crucial.</p>
+<p><strong>Python Code Example</strong>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a structured prompt for a recipe</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">Create a recipe for a chocolate cake. The recipe should include:</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">- Title: Simple Chocolate Cake</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">- Ingredients: List all ingredients with precise measurements</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">- Instructions: Provide a step-by-step guide on how to prepare the cake</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the structured recipe</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> chat_model.create(</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    messages<span class="op">=</span>[{<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: prompt}]</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response[<span class="st">'choices'</span>][<span class="dv">0</span>][<span class="st">'message'</span>][<span class="st">'content'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="strategy-4-chain-of-thought" class="level4" data-number="4.2.4">
+<h4 data-number="4.2.4" class="anchored" data-anchor-id="strategy-4-chain-of-thought"><span class="header-section-number">4.2.4</span> Strategy 4: Chain of Thought</h4>
+<p><strong>Explanation</strong>: Encouraging the model to “think” step-by-step can improve its reasoning abilities, particularly useful in problem-solving or tasks requiring logical progression, such as technical troubleshooting or complex decision-making.</p>
+<p><strong>Python Code Example</strong>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a prompt that uses the chain of thought approach</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">Problem: A user is unable to access their email account after multiple password resets. Let's think step by step to diagnose the issue:</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">Step 1: Verify if the user is using the correct email address.</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">Step 2: Check if their account is locked due to too many failed attempts.</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">Step 3: Ensure the password reset process is completed correctly.</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="st">Step 4: Suggest recovery through an alternate email or security questions.</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">What could be the issue based on these steps?</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a diagnostic response using the chain of thought</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> chat_model.create(</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    messages<span class="op">=</span>[{<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: prompt}]</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response[<span class="st">'choices'</span>][<span class="dv">0</span>][<span class="st">'message'</span>][<span class="st">'content'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="strategy-5-chatbot-personas" class="level4" data-number="4.2.5">
+<h4 data-number="4.2.5" class="anchored" data-anchor-id="strategy-5-chatbot-personas"><span class="header-section-number">4.2.5</span> Strategy 5: Chatbot Personas</h4>
+<p><strong>Explanation</strong>: Prompting an LLM to adopt a specific persona can tailor its responses to fit the desired character or expertise level. This strategy is particularly useful in customer service bots, educational tools, or any application where engaging and role-specific dialogue is beneficial.</p>
+<p><strong>Python Code Example</strong>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the OpenAI GPT library</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openai <span class="im">import</span> ChatCompletion</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the model with your API key</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>openai_api_key <span class="op">=</span> <span class="st">'your-api-key'</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>chat_model <span class="op">=</span> ChatCompletion(api_key<span class="op">=</span>openai_api_key, model<span class="op">=</span><span class="st">"gpt-3.5-turbo"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a prompt where the model adopts a persona</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">You are an expert gardener. A novice gardener asks for advice on starting a vegetable garden in a small backyard. Provide a friendly and detailed response that includes tips on soil preparation, choosing vegetables, and ongoing care.</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a response using the gardener persona</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> chat_model.create(</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    messages<span class="op">=</span>[{<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: prompt}]</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response[<span class="st">'choices'</span>][<span class="dv">0</span>][<span class="st">'message'</span>][<span class="st">'content'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="strategy-6-flipped-approach" class="level4" data-number="4.2.6">
+<h4 data-number="4.2.6" class="anchored" data-anchor-id="strategy-6-flipped-approach"><span class="header-section-number">4.2.6</span> Strategy 6: Flipped Approach</h4>
+<p><strong>Explanation</strong>: This technique involves prompting the LLM to ask questions back to the user to gain a better understanding of their needs. It’s especially effective in consultation services or any scenario where clarifying user intent is crucial for accurate responses.</p>
+<p><strong>Python Code Example</strong>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a prompt that uses the flipped approach for better understanding</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="st">You are a travel consultant. A client is planning a trip to Europe but hasn't provided much detail. Ask the client a series of questions to determine their preferences for destinations, travel style, budget, and any special interests they might have.</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a series of questions to help tailor the travel advice</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> chat_model.create(</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    messages<span class="op">=</span>[{<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: prompt}]</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response[<span class="st">'choices'</span>][<span class="dv">0</span>][<span class="st">'message'</span>][<span class="st">'content'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="strategy-7-reflect-review-and-refine" class="level4" data-number="4.2.7">
+<h4 data-number="4.2.7" class="anchored" data-anchor-id="strategy-7-reflect-review-and-refine"><span class="header-section-number">4.2.7</span> Strategy 7: Reflect, Review, and Refine</h4>
+<p><strong>Explanation</strong>: This strategy involves prompting the LLM to evaluate and potentially revise its previous responses. It is ideal for iterative tasks such as editing, programming, or any creative process where progressive refinement enhances the final output.</p>
+<p><strong>Python Code Example</strong>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a prompt that encourages reflection and refinement of a response</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="st">Initially, you wrote a brief summary of the novel 'To Kill a Mockingbird'. Now, review your summary, identify any inaccuracies or areas lacking in detail, and provide an improved version.</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate an improved summary through self-review and refinement</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> chat_model.create(</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    messages<span class="op">=</span>[{<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: prompt}]</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response[<span class="st">'choices'</span>][<span class="dv">0</span>][<span class="st">'message'</span>][<span class="st">'content'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Each of these tricks serves to enhance the interactivity and effectiveness of LLMs in specific scenarios. By employing these methods, developers can tailor the behavior of LLMs to meet diverse requirements and improve user experience, demonstrating the flexibility and potential of prompt engineering in practical applications. These examples illustrate how different prompt engineering tricks can be tailored to enhance LLM performance across a variety of tasks. The context in which each strategy is applied highlights its potential to improve the relevance and accuracy of the model’s responses, making them invaluable tools in the arsenal of developers and researchers working with LLMs.</p>
+</section>
+</section>
+<section id="comparative-analysis" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="comparative-analysis"><span class="header-section-number">4.3</span> Comparative Analysis</h3>
+<section id="blue-score" class="level4" data-number="4.3.1">
+<h4 data-number="4.3.1" class="anchored" data-anchor-id="blue-score"><span class="header-section-number">4.3.1</span> BLUE Score</h4>
+<p>Here’s an example code to compare the responses from a good prompt and a poor prompt using the BLEU score in Python:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.translate.bleu_score <span class="im">import</span> sentence_bleu</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Download required NLTK data</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'punkt'</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the good and poor prompts</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>good_prompt <span class="op">=</span> <span class="st">"Explain the theory of relativity in simple terms."</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>poor_prompt <span class="op">=</span> <span class="st">"What is relativity?"</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Get responses from the language model (replace with your own code)</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>good_response <span class="op">=</span> <span class="st">"The theory of relativity, proposed by Albert Einstein, revolves around two main ideas: special relativity and general relativity. Special relativity states that the laws of physics are the same for all non-accelerating observers, and that the speed of light in a vacuum is independent of the motion of all observers. General relativity describes gravity not as a force, but as a consequence of the curvature of spacetime caused by the presence of mass and energy."</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>poor_response <span class="op">=</span> <span class="st">"Relativity is a scientific theory developed by Albert Einstein."</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Tokenize the responses</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>good_response_tokens <span class="op">=</span> nltk.word_tokenize(good_response)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>poor_response_tokens <span class="op">=</span> nltk.word_tokenize(poor_response)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate BLEU scores</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>bleu_score_good_as_ref <span class="op">=</span> sentence_bleu([good_response_tokens], poor_response_tokens)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>bleu_score_poor_as_ref <span class="op">=</span> sentence_bleu([poor_response_tokens], good_response_tokens)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"BLEU score (good response as reference): </span><span class="sc">{</span>bleu_score_good_as_ref<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"BLEU score (poor response as reference): </span><span class="sc">{</span>bleu_score_poor_as_ref<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here’s how the code works:</p>
+<ol type="1">
+<li>We import the necessary modules and download the required NLTK data for tokenization.</li>
+<li>We define the good and poor prompts as strings.</li>
+<li>We obtain the responses from the language model for the good and poor prompts. In this example, we’ve hardcoded the responses, but in practice, you would replace these with your own code to generate responses from the language model.</li>
+<li>We tokenize the good and poor responses using <code>nltk.word_tokenize</code>.</li>
+<li>We calculate the BLEU scores in both directions:
+<ul>
+<li><code>bleu_score_good_as_ref</code> treats the good prompt response as the reference and the poor prompt response as the candidate.</li>
+<li><code>bleu_score_poor_as_ref</code> treats the poor prompt response as the reference and the good prompt response as the candidate.</li>
+</ul></li>
+<li>We print out both BLEU scores.</li>
+</ol>
+<p>When you run this code, you should see output similar to:</p>
+<pre><code>BLEU score (good response as reference): 0.235
+BLEU score (poor response as reference): 0.087</code></pre>
+<p>In this example, the BLEU score is higher when using the good prompt response as the reference (0.235) compared to using the poor prompt response as the reference (0.087). This suggests that the response from the good prompt has more n-gram overlap with the response from the poor prompt, indicating that the good prompt elicited a more informative and relevant response.</p>
+<p>You can interpret the BLEU scores as follows:</p>
+<ul>
+<li>A higher BLEU score when using the good prompt response as the reference suggests that the poor prompt response is more similar to the desired response (from the good prompt).</li>
+<li>A lower BLEU score when using the poor prompt response as the reference indicates that the good prompt response is less similar to the undesirable response (from the poor prompt).</li>
+</ul>
+<p>By comparing the BLEU scores in both directions, you can evaluate which prompt yielded a response that is more relevant and informative for the given topic.</p>
+</section>
+<section id="rouge-recall-oriented-understudy-for-gisting-evaluation" class="level4" data-number="4.3.2">
+<h4 data-number="4.3.2" class="anchored" data-anchor-id="rouge-recall-oriented-understudy-for-gisting-evaluation"><span class="header-section-number">4.3.2</span> ROUGE (Recall-Oriented Understudy for Gisting Evaluation)</h4>
+<p>The ROGUE score is a set of metrics used primarily for evaluating automatic summarization and machine translation. It measures the overlap between the system-generated text and reference texts, focusing on the number of overlapping units such as n-grams, word sequences, and word pairs. The most commonly used variants are ROUGE-N (which measures n-gram overlap), ROUGE-L (which measures the longest common subsequence), and ROUGE-S (which measures skip-bigram overlap). Below, we implement the ROUGE-L score in Python to evaluate the quality of responses from language models. This will require the installation of the <code>rouge</code> package, which can be done using pip:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install rouge</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="python-implementation-example-for-rouge-l" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="python-implementation-example-for-rouge-l"><span class="header-section-number">4.4</span> Python Implementation Example for ROUGE-L</h3>
+<p>Here’s an example of how you can calculate the ROUGE-L score for a language model’s responses using the Python <code>rouge</code> library:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rouge <span class="im">import</span> Rouge</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the ROUGE scorer</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>rouge <span class="op">=</span> Rouge()</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Example reference and system-generated summaries</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>reference <span class="op">=</span> <span class="st">"John F. Kennedy was the 35th president of the United States. He served from 1961 until his assassination in 1963."</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>system_generated_1 <span class="op">=</span> <span class="st">"JFK, also known as John Kennedy, was the president of the US who served from 1961 to 1963."</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>system_generated_2 <span class="op">=</span> <span class="st">"The 35th president of the United States was John F. Kennedy, who served from January 1961 until his assassination in November 1963."</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate ROUGE scores</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>scores_1 <span class="op">=</span> rouge.get_scores(system_generated_1, reference)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>scores_2 <span class="op">=</span> rouge.get_scores(system_generated_2, reference)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Print ROUGE-L scores for each system-generated summary</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"ROUGE-L Score for System-Generated Summary 1:"</span>, scores_1[<span class="dv">0</span>][<span class="st">'rouge-l'</span>])</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"ROUGE-L Score for System-Generated Summary 2:"</span>, scores_2[<span class="dv">0</span>][<span class="st">'rouge-l'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="explanation" class="level3" data-number="4.5">
+<h3 data-number="4.5" class="anchored" data-anchor-id="explanation"><span class="header-section-number">4.5</span> Explanation</h3>
+<ul>
+<li><p><strong>ROUGE-L</strong>: This score focuses on the longest common subsequence between the system-generated text and the reference text. It considers sentence-level structure similarity naturally and identifies longest co-occurring in-sequence n-grams of words. It provides two scores: precision (what fraction of the generated words are relevant) and recall (what fraction of the reference words were captured by the generated text), and an F-measure which is the harmonic mean of precision and recall.</p></li>
+<li><p><strong>System-Generated Summaries</strong>: These are the texts generated by your system, in this case, responses from a language model.</p></li>
+<li><p><strong>Reference Summary</strong>: This is the “ideal” or target summary against which the system-generated summaries are compared.</p></li>
+</ul>
+</section>
+<section id="usage-considerations" class="level3" data-number="4.6">
+<h3 data-number="4.6" class="anchored" data-anchor-id="usage-considerations"><span class="header-section-number">4.6</span> Usage Considerations</h3>
+<ul>
+<li><strong>Contextual Relevance</strong>: While ROUGE scores can provide objective measures of textual overlap, they might not fully account for the semantic accuracy or contextual relevance of the generated text. For more nuanced evaluations, consider combining ROUGE with manual qualitative assessments.</li>
+<li><strong>Variants</strong>: Depending on the specific requirements of your evaluation, you might choose different ROUGE metrics (like ROUGE-N for n-gram overlap, or ROUGE-S for skip-bigrams) to focus on different aspects of the comparison.</li>
+</ul>
+<p>This approach allows you to quantitatively assess how well a language model’s responses match a reference, providing a standardized measure to compare different prompting strategies or model configurations in your research or application development.</p>
+</section>
+<section id="using-bertscore-without-a-predefined-reference" class="level3" data-number="4.7">
+<h3 data-number="4.7" class="anchored" data-anchor-id="using-bertscore-without-a-predefined-reference"><span class="header-section-number">4.7</span> Using BERTscore without a Predefined Reference</h3>
+<p>Using BERTscore to compare the responses to a “poor” prompt and a “good” prompt is a viable approach, especially when you are trying to assess how effectively each prompt elicits the intended response from a language model. Essentially, you would compare the response to each type of prompt against a reference standard or even against each other to determine which prompt results in a more semantically rich and relevant response.</p>
+<p>If you don’t have a predefined reference response but want to compare the quality of responses between two prompts, you can consider the following approaches:</p>
+<ol type="1">
+<li><p><strong>Use Responses as Mutual References</strong>: Treat the response from one prompt as the reference for the other and vice versa. This comparative approach can highlight which prompt elicits a response that is more informative or relevant to the topic.</p></li>
+<li><p><strong>Create a Synthetic Reference</strong>: If you know what information the response should contain, you can construct a synthetic reference response that includes all the expected elements. This reference can then be used to evaluate the responses from both the poor and good prompts.</p></li>
+</ol>
+<p>Here’s how to implement the first approach using the BERTscore:</p>
+<section id="implementation-of-bertscore-comparison" class="level4" data-number="4.7.1">
+<h4 data-number="4.7.1" class="anchored" data-anchor-id="implementation-of-bertscore-comparison"><span class="header-section-number">4.7.1</span> Implementation of BERTscore Comparison</h4>
+<p>First, ensure you have the <code>bert-score</code> package installed:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install bert-score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then, set up your comparison:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bert_score <span class="im">import</span> score</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming you've obtained responses from the model</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>response_from_poor_prompt <span class="op">=</span> <span class="st">"The quick brown fox tries to jump but fails."</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>response_from_good_prompt <span class="op">=</span> <span class="st">"The quick brown fox jumps over the lazy dog."</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Using each other as references</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>P_poor, R_poor, F1_poor <span class="op">=</span> score([response_from_poor_prompt], [response_from_good_prompt], lang<span class="op">=</span><span class="st">"en"</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>P_good, R_good, F1_good <span class="op">=</span> score([response_from_good_prompt], [response_from_poor_prompt], lang<span class="op">=</span><span class="st">"en"</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Comparison using Good Prompt as Reference:"</span>)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Precision: </span><span class="sc">{</span>P_poor<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">, Recall: </span><span class="sc">{</span>R_poor<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">, F1 Score: </span><span class="sc">{</span>F1_poor<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Comparison using Poor Prompt as Reference:"</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Precision: </span><span class="sc">{</span>P_good<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">, Recall: </span><span class="sc">{</span>R_good<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">, F1 Score: </span><span class="sc">{</span>F1_good<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="interpretation" class="level3" data-number="4.8">
+<h3 data-number="4.8" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">4.8</span> Interpretation</h3>
+<ul>
+<li><strong>Precision</strong>: Measures how much of the information in the generated response is relevant (i.e., how much of the generated content actually pertains to what the reference response discusses).</li>
+<li><strong>Recall</strong>: Measures how much of the reference’s content is covered by the generated response (i.e., how much of the essential information in the reference was captured in the generated response).</li>
+<li><strong>F1 Score</strong>: The harmonic mean of precision and recall, providing a single score that balances both completeness and accuracy.</li>
+</ul>
+</section>
+<section id="considerations" class="level3" data-number="4.9">
+<h3 data-number="4.9" class="anchored" data-anchor-id="considerations"><span class="header-section-number">4.9</span> Considerations</h3>
+<p>This method of using responses as mutual references can be particularly useful when direct comparison metrics are needed to evaluate the effectiveness of different prompts in eliciting detailed and relevant responses. It is somewhat subjective, as it assumes that one of the responses contains sufficient quality content to serve as a benchmark—a fair assumption if one prompt is indeed superior.</p>
+<p>By comparing these metrics, you can objectively analyze which prompt results in a better response in terms of information richness and relevance, thereby supporting the effectiveness of your prompt engineering techniques.</p>
+</section>
+</section>
+<section id="case-study-building-an-automatic-grader" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="case-study-building-an-automatic-grader"><span class="header-section-number">5</span> Case Study: Building an Automatic Grader</h2>
+<p>The practical application of prompt engineering is demonstrated through the development of an automatic grader for educational purposes. Using LangChain, a Python library for LLM integration, we construct a prompt-based system that evaluates student responses to open-ended questions. This system exemplifies the shift from traditional programming methods to a model where significant portions of logic are outsourced to an LLM, highlighting the efficiency and scalability of prompt engineering.</p>
+<p>This section provides a detailed guide to building an automatic grader application utilizing LangChain, a Python library designed to simplify the integration of large language models (LLMs) in application development. The application leverages prompt engineering to evaluate student responses in a high school history class, demonstrating the practical implementation of LLMs in educational settings.</p>
+<section id="overview" class="level4" data-number="5.0.1">
+<h4 data-number="5.0.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">5.0.1</span> Overview</h4>
+<p>The automatic grader application is designed to assess short-answer questions, where answers might vary but still be correct. The grader needs to handle different phrasings, synonyms, and minor spelling errors effectively.</p>
+</section>
+<section id="setup-and-dependencies" class="level4" data-number="5.0.2">
+<h4 data-number="5.0.2" class="anchored" data-anchor-id="setup-and-dependencies"><span class="header-section-number">5.0.2</span> Setup and Dependencies</h4>
+<p>Before starting, ensure you have Python installed along with the necessary libraries. You’ll need <code>langchain</code> and <code>openai</code>. If not already installed, they can be added via pip:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install langchain openai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="code-implementation" class="level4" data-number="5.0.3">
+<h4 data-number="5.0.3" class="anchored" data-anchor-id="code-implementation"><span class="header-section-number">5.0.3</span> Code Implementation</h4>
+<p><strong>Step 1: Import Necessary Libraries</strong></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import necessary modules from LangChain and OpenAI</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain.chat_models <span class="im">import</span> ChatOpenAI</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain.prompts <span class="im">import</span> PromptTemplate</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain.chains <span class="im">import</span> LLMChain</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain.schema <span class="im">import</span> BaseOutputParser</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Step 2: Define the Prompt Template</strong> The prompt template mimics a high school history teacher grading an assignment. It should account for the question, the correct answer, and the student’s response.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the prompt template for grading</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>prompt_template_text <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="st">You are a high school history teacher grading homework assignments. </span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="st">Based on the homework question indicated by "**Q:**" and the correct answer </span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="st">indicated by "**A:**", your task is to determine whether the student's answer is correct. </span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="st">Grading is binary; therefore, student answers can be correct or wrong. </span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="st">Simple misspellings are okay.</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="st">**Q:** </span><span class="sc">{question}</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="st">**A:** </span><span class="sc">{correct_answer}</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="st">**Student's Answer:** </span><span class="sc">{student_answer}</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Step 3: Initialize LangChain</strong></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define and initialize the ChatOpenAI model with your OpenAI API key</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>chat_model <span class="op">=</span> ChatOpenAI(openai_api_key<span class="op">=</span><span class="st">"your-openai-api-key"</span>, temperature<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a prompt template object</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> PromptTemplate(</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    input_variables<span class="op">=</span>[<span class="st">"question"</span>, <span class="st">"correct_answer"</span>, <span class="st">"student_answer"</span>],</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    template<span class="op">=</span>prompt_template_text</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the chain using the LLM and the prompt</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>chain <span class="op">=</span> LLMChain(llm<span class="op">=</span>chat_model, prompt<span class="op">=</span>prompt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Step 4: Output Parser</strong> This component converts the LLM’s response into a structured format that can be easily interpreted by other systems.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define an output parser to interpret the LLM's grading response</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> GradeOutputParser(BaseOutputParser):</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Parses the LLM's response to determine if the answer is correct or wrong."""</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> parse(<span class="va">self</span>, text: <span class="bu">str</span>):</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Check if the response indicates the student's answer was wrong."""</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"wrong"</span> <span class="kw">not</span> <span class="kw">in</span> text.lower()</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the chain to use the new output parser</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>chain.output_parser <span class="op">=</span> GradeOutputParser()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Step 5: Running the Grader</strong></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample question and answers</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>question <span class="op">=</span> <span class="st">"Who was the 35th president of the United States of America?"</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>correct_answer <span class="op">=</span> <span class="st">"John F. Kennedy"</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>student_answers <span class="op">=</span> [<span class="st">"JFK"</span>, <span class="st">"John F Kennedy"</span>, <span class="st">"John Kennedy"</span>, <span class="st">"Jack Kennedy"</span>]</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate each student answer</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> student_answer <span class="kw">in</span> student_answers:</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> chain.run({<span class="st">'question'</span>: question, <span class="st">'correct_answer'</span>: correct_answer, <span class="st">'student_answer'</span>: student_answer})</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Question: </span><span class="sc">{</span>question<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Student Answer: </span><span class="sc">{</span>student_answer<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span><span class="st">'Correct'</span> <span class="cf">if</span> result <span class="cf">else</span> <span class="st">'Incorrect'</span><span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This example application showcases how LangChain can be utilized to develop practical, LLM-integrated solutions for real-world problems such as grading. The automatic grader is not only efficient but also demonstrates the capability of LLMs to handle variability in natural language processing tasks, making it an ideal solution for educational applications.</p>
+</section>
+</section>
+<section id="discussion-efficacy-and-limitations-of-prompt-engineering" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="discussion-efficacy-and-limitations-of-prompt-engineering"><span class="header-section-number">6</span> Discussion: Efficacy and Limitations of Prompt Engineering</h2>
+<p>While prompt engineering offers substantial advantages, including significant reductions in development time and increased flexibility, it is not without limitations. The effectiveness of prompt strategies can vary significantly between different LLM versions, and the approach may incur considerable computational costs. Furthermore, the general-purpose nature of large models like ChatGPT may not be optimal for specialized tasks, which could be better served by fine-tuning specific models tailored to particular needs.</p>
+</section>
+<section id="conclusion" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">7</span> Conclusion</h2>
+<p>Prompt engineering represents a transformative approach to programming, enabling developers to harness the capabilities of LLMs in a user-friendly and cost-effective manner. As this field evolves, it is expected that the techniques and strategies of prompt engineering will become increasingly refined, paving the way for more sophisticated and integrated applications across various domains.</p>
+</section>
+<section id="future-work" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="future-work"><span class="header-section-number">8</span> Future Work</h2>
+<p>Further research is needed to explore the scalability of prompt engineering across different platforms and its integration with advanced model fine-tuning techniques. Additionally, comparative studies could elucidate the conditions under which prompt engineering is most effective compared to traditional programming approaches.</p>
+<section id="references" class="level3" data-number="8.1">
+<h3 data-number="8.1" class="anchored" data-anchor-id="references"><span class="header-section-number">8.1</span> References</h3>
+<ol type="1">
+<li>Talebi, S. (2023). Prompt Engineering: How to strategy AI into Solving Your Problems. <em>Towards Data Science</em>.</li>
+<li>Karpathy, A. (n.d.). <em>Language Models as Few-Shot Learners</em>.</li>
+<li>Wei, J., et al.&nbsp;(2021). <em>Chain of Thought Prompting Elicits Reasoning in Large Language Models</em>.</li>
+</ol>
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{borck2024,
+  author = {Borck, Michael},
+  title = {Revisiting {Prompt} {Engineering:} {Strategic} {Interactions}
+    with {Large} {Language} {Models} for {Application} {Development}},
+  date = {2024-04-24},
+  langid = {en},
+  abstract = {Prompt engineering has emerged as a crucial technique for
+    leveraging the capabilities of large language models (LLMs) in
+    application development. This paper explores the nuances of prompt
+    engineering, presenting it not merely as a tool for interaction but
+    as a programming paradigm that significantly eases the deployment of
+    LLM capabilities into practical applications. We examine various
+    levels and strategies of prompt engineering, highlighting their
+    practical implications and potential for simplifying complex tasks.}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-borck2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Borck, Michael. 2024. <span>“Revisiting Prompt Engineering: Strategic
+Interactions with Large Language Models for Application
+Development.”</span> BARG Curtin University. April 24, 2024.
+</div></div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
