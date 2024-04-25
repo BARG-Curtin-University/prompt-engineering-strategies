@@ -41,14 +41,28 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
+\makeatletter
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
-  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
 \fi
 \ifx\subparagraph\undefined\else
   \let\oldsubparagraph\subparagraph
-  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
+\makeatother
 
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -68,7 +82,7 @@
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
 \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
@@ -78,7 +92,7 @@
 \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
 \newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
 \newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
 \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
@@ -191,7 +205,8 @@ Techniques},
 Language Models for Application Development}
 
 \authors{Michael Borck\affil{1}}
-\affiliation{1}{Curtin University, }
+\affiliation{1}{Business Information Systems, Curtin University, Perth
+Australia, }
 \correspondingauthor{Michael Borck}{michael.borck@curtin.edu.au}
 
 
@@ -214,7 +229,7 @@ engineering: a basic level for straightforward tasks such as email
 drafting, and a more complex level involving programming interfaces for
 deeper software integration, such as automatic grading systems. The
 technique is portrayed as an empirical art that simplifies the
-development process by minimizing coding efforts and maximizing AI
+development process by minimising coding efforts and maximising AI
 utility, although it faces challenges such as variability in
 effectiveness and potential high costs. The paper advocates for more
 research to enhance the scalability and efficiency of prompt
@@ -232,13 +247,13 @@ machine learning algorithms. However, a more accessible approach has
 surfaced, known as prompt engineering, which allows even those with
 minimal coding expertise to leverage the advanced capabilities of LLMs
 effectively. This paper delves into prompt engineering, defined as the
-strategic formulation of input prompts to maximize the utility of LLMs
+strategic formulation of input prompts to maximise the utility of LLMs
 without internal model retraining. We argue that prompt engineering is
 an underappreciated yet powerful tool for developers, capable of
 achieving substantial outcomes with minimal effort.
 
 Prompt engineering is defined as the strategic formulation of input
-queries to maximize the utility and accuracy of responses from LLMs.
+queries to maximise the utility and accuracy of responses from LLMs.
 Initially perceived with skepticism, this methodology has quickly proven
 its worth, demonstrating that a well-crafted prompt can extract
 considerable value from these models with relatively low effort. The
@@ -274,8 +289,8 @@ of artificial intelligence and machine learning.
 Analysis}\label{prompt-engineering-a-dual-level-analysis}
 
 Prompt engineering operates at two distinct levels. The first, an
-intuitive and straightforward approach, utilizes platforms like ChatGPT
-to execute simple tasks (e.g., text summarization, email drafting).
+intuitive and straightforward approach, utilises platforms like ChatGPT
+to execute simple tasks (e.g., text summarisation, email drafting).
 Although this method is accessible, its integration into larger systems
 is non-trivial. The second level involves a more sophisticated
 interaction through programming interfaces, such as Python APIs,
@@ -287,7 +302,7 @@ educational applications.
 \subsection{Methodology: Empirical Techniques in Prompt
 Engineering}\label{methodology-empirical-techniques-in-prompt-engineering}
 
-We categorize prompt engineering as an empirical art, where the
+We categorise prompt engineering as an empirical art, where the
 composition and formatting of prompts are tailored to enhance model
 performance on specific tasks. This approach draws on the inherent
 desire of language models to complete text-based tasks, effectively
@@ -299,9 +314,9 @@ processes, to improve the interaction quality with LLMs.
 This study systematically investigates the impact of prompt engineering
 on the performance of large language models (LLMs). Our approach
 involves comparing the efficacy of well-crafted (``good'') prompts
-against less optimized (``poor'') prompts in eliciting accurate and
+against less optimised (``poor'') prompts in eliciting accurate and
 relevant responses from the models. We detail the experimental design,
-tools utilized, and metrics applied for evaluating the results.
+tools utilised, and metrics applied for evaluating the results.
 
 \paragraph{Experimental Design}\label{experimental-design}
 
@@ -324,12 +339,12 @@ The experiments are structured to assess two main types of prompts:
 For each type of prompt, identical tasks are presented to the LLM to
 ensure that the only variable affecting output quality is the prompt
 construction itself. Tasks include generating text-based responses
-across several domains, such as summarizing passages, answering
+across several domains, such as summarising passages, answering
 questions, and creating content based on given specifications.
 
 \paragraph{Tools and Models}\label{tools-and-models}
 
-The study utilizes OpenAI's GPT-3 model due to its widespread adoption
+The study utilises OpenAI's GPT-3 model due to its widespread adoption
 and robust performance across a variety of natural language processing
 tasks. We interact with GPT-3 using the following tools:
 
@@ -342,7 +357,7 @@ tasks. We interact with GPT-3 using the following tools:
 \item
   \textbf{Quarto}: To document and share our findings, we use Quarto, an
   interactive computing framework that allows embedding live code,
-  visualizations, and narrative text. This choice supports the dynamic
+  visualisations, and narrative text. This choice supports the dynamic
   presentation of our methods and results, enabling readers to engage
   directly with the analyses.
 \end{itemize}
@@ -378,8 +393,8 @@ Analysis}\label{data-collection-and-analysis}
 Responses from the LLM are collected under controlled conditions to
 ensure consistency across tests. Each response is logged along with the
 prompt used, allowing for detailed comparative analysis. The data are
-analyzed using statistical tools to identify significant differences in
-performance metrics between good and poor prompts. Visualizations are
+analysed using statistical tools to identify significant differences in
+performance metrics between good and poor prompts. Visualisations are
 created to illustrate these differences clearly, providing both
 quantitative and qualitative insights into the effectiveness of various
 prompt engineering techniques.
@@ -447,7 +462,7 @@ https://typeset.io/questions/how-do-different-types-of-prompts-affect-the-qualit
 
 Through this comprehensive methodology, the study aims to provide
 actionable insights into the art of prompt engineering, guiding users on
-how to best utilize LLMs for a range of applications.
+how to best utilise LLMs for a range of applications.
 
 Even without a predefined reference text, you can still compare the
 responses from a good prompt and a poor prompt using metrics like
@@ -508,7 +523,7 @@ into the effectiveness of prompt engineering techniques for enhancing
 the performance of large language models (LLMs). Our analysis focuses on
 quantitatively evaluating the impact of well-constructed versus poorly
 constructed prompts on the quality of the responses generated by LLMs.
-We utilize three established metrics for this evaluation: BLEU Score,
+We utilise three established metrics for this evaluation: BLEU Score,
 ROUGE Score, and BERTscore, each providing insights into different
 aspects of text quality such as precision, recall, and semantic
 similarity. The results clearly demonstrate the significant influence
@@ -518,10 +533,10 @@ interactive examples that not only illustrate these effects but also
 allow readers to explore the nuances of prompt engineering through live
 code. These examples showcase practical applications and underscore the
 practical implications of our findings, bridging theoretical research
-with actionable insights. Through dynamic visualizations and interactive
+with actionable insights. Through dynamic visualisations and interactive
 Quarto cells, readers are invited to engage directly with the data,
 enhancing their understanding of how strategic prompt design can be
-effectively utilized in real-world applications.
+effectively utilised in real-world applications.
 
 \subsubsection{Overview of Experimental
 Results}\label{overview-of-experimental-results}
@@ -538,7 +553,7 @@ Results}\label{overview-of-experimental-results}
 \item
   Compare the outputs and effectiveness of the LLM across different
   prompting techniques illustrated in the detailed examples and the case
-  study. This section would analyze the broader implications of prompt
+  study. This section would analyse the broader implications of prompt
   engineering on practical applications.
 \item
   Discuss how variations in prompt construction can lead to significant
@@ -550,7 +565,7 @@ Prompts}\label{detailed-examples-of-good-vs.-poor-prompts}
 
 This section provides detailed descriptions and Python code examples for
 various prompt engineering tricks used to enhance the performance of
-large language models (LLMs). Each strategy is designed to optimize the
+large language models (LLMs). Each strategy is designed to optimise the
 interaction with LLMs in different contexts, demonstrating practical
 applications and potential benefits.
 
@@ -561,7 +576,7 @@ Better)}\label{strategy-1-be-descriptive-more-is-better}
 helps the LLM understand the context better, leading to more accurate
 and relevant responses. This strategy is particularly useful in
 scenarios where the details are critical to the task, such as generating
-personalized content or specific instructions.
+personalised content or specific instructions.
 
 \textbf{Python Code Example}:
 
@@ -570,7 +585,7 @@ personalized content or specific instructions.
 \CommentTok{\# Importing the OpenAI GPT library}
 \ImportTok{from}\NormalTok{ openai }\ImportTok{import}\NormalTok{ ChatCompletion}
 
-\CommentTok{\# Initialize the model with your API key}
+\CommentTok{\# Initialise the model with your API key}
 \NormalTok{openai\_api\_key }\OperatorTok{=} \StringTok{\textquotesingle{}your{-}api{-}key\textquotesingle{}}
 \NormalTok{chat\_model }\OperatorTok{=}\NormalTok{ ChatCompletion(api\_key}\OperatorTok{=}\NormalTok{openai\_api\_key, model}\OperatorTok{=}\StringTok{"gpt{-}3.5{-}turbo"}\NormalTok{)}
 
@@ -608,7 +623,7 @@ can enhance output relevancy.
 \StringTok{Subtitle: Exploring the latest breakthroughs in sustainable power sources}
 
 \StringTok{Title: The Future of AI in Medicine}
-\StringTok{Subtitle: How AI is revolutionizing diagnostics and patient care}
+\StringTok{Subtitle: How AI is revolutionising diagnostics and patient care}
 
 \StringTok{Title: Innovations in Educational Technology}
 \StringTok{Subtitle: New tools that are transforming how students learn}
@@ -628,10 +643,10 @@ can enhance output relevancy.
 \paragraph{Strategy 3: Use Structured
 Text}\label{strategy-3-use-structured-text}
 
-\textbf{Explanation}: Structuring prompts in a clear and organized
+\textbf{Explanation}: Structuring prompts in a clear and organised
 manner can help the model parse and process the information more
 effectively. This approach is ideal for tasks that require data
-extraction, summarization, or any application where clarity and
+extraction, summarisation, or any application where clarity and
 precision are crucial.
 
 \textbf{Python Code Example}:
@@ -702,7 +717,7 @@ dialogue is beneficial.
 \CommentTok{\# Importing the OpenAI GPT library}
 \ImportTok{from}\NormalTok{ openai }\ImportTok{import}\NormalTok{ ChatCompletion}
 
-\CommentTok{\# Initialize the model with your API key}
+\CommentTok{\# Initialise the model with your API key}
 \NormalTok{openai\_api\_key }\OperatorTok{=} \StringTok{\textquotesingle{}your{-}api{-}key\textquotesingle{}}
 \NormalTok{chat\_model }\OperatorTok{=}\NormalTok{ ChatCompletion(api\_key}\OperatorTok{=}\NormalTok{openai\_api\_key, model}\OperatorTok{=}\StringTok{"gpt{-}3.5{-}turbo"}\NormalTok{)}
 
@@ -803,9 +818,9 @@ poor prompt using the BLEU score in Python:
 \NormalTok{good\_response }\OperatorTok{=} \StringTok{"The theory of relativity, proposed by Albert Einstein, revolves around two main ideas: special relativity and general relativity. Special relativity states that the laws of physics are the same for all non{-}accelerating observers, and that the speed of light in a vacuum is independent of the motion of all observers. General relativity describes gravity not as a force, but as a consequence of the curvature of spacetime caused by the presence of mass and energy."}
 \NormalTok{poor\_response }\OperatorTok{=} \StringTok{"Relativity is a scientific theory developed by Albert Einstein."}
 
-\CommentTok{\# Tokenize the responses}
-\NormalTok{good\_response\_tokens }\OperatorTok{=}\NormalTok{ nltk.word\_tokenize(good\_response)}
-\NormalTok{poor\_response\_tokens }\OperatorTok{=}\NormalTok{ nltk.word\_tokenize(poor\_response)}
+\CommentTok{\# Tokenise the responses}
+\NormalTok{good\_response\_tokens }\OperatorTok{=}\NormalTok{ nltk.word\_tokenise(good\_response)}
+\NormalTok{poor\_response\_tokens }\OperatorTok{=}\NormalTok{ nltk.word\_tokenise(poor\_response)}
 
 \CommentTok{\# Calculate BLEU scores}
 \NormalTok{bleu\_score\_good\_as\_ref }\OperatorTok{=}\NormalTok{ sentence\_bleu([good\_response\_tokens], poor\_response\_tokens)}
@@ -823,7 +838,7 @@ Here's how the code works:
 \tightlist
 \item
   We import the necessary modules and download the required NLTK data
-  for tokenization.
+  for tokenisation.
 \item
   We define the good and poor prompts as strings.
 \item
@@ -832,8 +847,8 @@ Here's how the code works:
   practice, you would replace these with your own code to generate
   responses from the language model.
 \item
-  We tokenize the good and poor responses using
-  \texttt{nltk.word\_tokenize}.
+  We tokenise the good and poor responses using
+  \texttt{nltk.word\_tokenise}.
 \item
   We calculate the BLEU scores in both directions:
 
@@ -886,7 +901,7 @@ given topic.
 Evaluation)}\label{rouge-recall-oriented-understudy-for-gisting-evaluation}
 
 The ROGUE score is a set of metrics used primarily for evaluating
-automatic summarization and machine translation. It measures the overlap
+automatic summarisation and machine translation. It measures the overlap
 between the system-generated text and reference texts, focusing on the
 number of overlapping units such as n-grams, word sequences, and word
 pairs. The most commonly used variants are ROUGE-N (which measures
@@ -912,7 +927,7 @@ language model's responses using the Python \texttt{rouge} library:
 \begin{Highlighting}[]
 \ImportTok{from}\NormalTok{ rouge }\ImportTok{import}\NormalTok{ Rouge}
 
-\CommentTok{\# Initialize the ROUGE scorer}
+\CommentTok{\# Initialise the ROUGE scorer}
 \NormalTok{rouge }\OperatorTok{=}\NormalTok{ Rouge()}
 
 \CommentTok{\# Example reference and system{-}generated summaries}
@@ -968,7 +983,7 @@ language model's responses using the Python \texttt{rouge} library:
 \end{itemize}
 
 This approach allows you to quantitatively assess how well a language
-model's responses match a reference, providing a standardized measure to
+model's responses match a reference, providing a standardised measure to
 compare different prompting strategies or model configurations in your
 research or application development.
 
@@ -1023,7 +1038,7 @@ Then, set up your comparison:
 
 \CommentTok{\# Assuming you\textquotesingle{}ve obtained responses from the model}
 \NormalTok{response\_from\_poor\_prompt }\OperatorTok{=} \StringTok{"The quick brown fox tries to jump but fails."}
-\NormalTok{response\_from\_good\_prompt }\OperatorTok{=} \StringTok{"The quick brown fox jumps over the lazy dog."}
+\NormalTok{response\_from\_good\_prompt }\OperatorTok{=} \StringTok{"The quick brown fox jumps over the lasy dog."}
 
 \CommentTok{\# Using each other as references}
 \NormalTok{P\_poor, R\_poor, F1\_poor }\OperatorTok{=}\NormalTok{ score([response\_from\_poor\_prompt], [response\_from\_good\_prompt], lang}\OperatorTok{=}\StringTok{"en"}\NormalTok{)}
@@ -1064,7 +1079,7 @@ responses. It is somewhat subjective, as it assumes that one of the
 responses contains sufficient quality content to serve as a
 benchmark---a fair assumption if one prompt is indeed superior.
 
-By comparing these metrics, you can objectively analyze which prompt
+By comparing these metrics, you can objectively analyse which prompt
 results in a better response in terms of information richness and
 relevance, thereby supporting the effectiveness of your prompt
 engineering techniques.
@@ -1082,7 +1097,7 @@ outsourced to an LLM, highlighting the efficiency and scalability of
 prompt engineering.
 
 This section provides a detailed guide to building an automatic grader
-application utilizing LangChain, a Python library designed to simplify
+application utilising LangChain, a Python library designed to simplify
 the integration of large language models (LLMs) in application
 development. The application leverages prompt engineering to evaluate
 student responses in a high school history class, demonstrating the
@@ -1143,11 +1158,11 @@ the question, the correct answer, and the student's response.
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{Step 3: Initialize LangChain}
+\textbf{Step 3: Initialise LangChain}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Define and initialize the ChatOpenAI model with your OpenAI API key}
+\CommentTok{\# Define and initialise the ChatOpenAI model with your OpenAI API key}
 \NormalTok{chat\_model }\OperatorTok{=}\NormalTok{ ChatOpenAI(openai\_api\_key}\OperatorTok{=}\StringTok{"your{-}openai{-}api{-}key"}\NormalTok{, temperature}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
 
 \CommentTok{\# Create a prompt template object}
@@ -1197,7 +1212,7 @@ other systems.
 \end{Highlighting}
 \end{Shaded}
 
-This example application showcases how LangChain can be utilized to
+This example application showcases how LangChain can be utilised to
 develop practical, LLM-integrated solutions for real-world problems such
 as grading. The automatic grader is not only efficient but also
 demonstrates the capability of LLMs to handle variability in natural
@@ -1212,7 +1227,7 @@ significant reductions in development time and increased flexibility, it
 is not without limitations. The effectiveness of prompt strategies can
 vary significantly between different LLM versions, and the approach may
 incur considerable computational costs. Furthermore, the general-purpose
-nature of large models like ChatGPT may not be optimal for specialized
+nature of large models like ChatGPT may not be optimal for specialised
 tasks, which could be better served by fine-tuning specific models
 tailored to particular needs.
 

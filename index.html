@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.5.31">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Michael Borck">
-<meta name="dcterms.date" content="2024-04-24">
+<meta name="dcterms.date" content="2024-04-25">
 <meta name="keywords" content="Prompt Engineering, Large Language Models (LLMs), Programming Paradigm, Application Development, Empirical Techniques">
 
 <title>Revisiting Prompt Engineering: Strategic Interactions with Large Language Models for Application Development</title>
@@ -36,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -83,10 +83,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ">
 <meta name="citation_keywords" content="Prompt Engineering,Large Language Models (LLMs),Programming Paradigm,Application Development,Empirical Techniques">
 <meta name="citation_author" content="Michael Borck">
-<meta name="citation_publication_date" content="2024-04-24">
-<meta name="citation_cover_date" content="2024-04-24">
+<meta name="citation_publication_date" content="2024-04-25">
+<meta name="citation_cover_date" content="2024-04-25">
 <meta name="citation_year" content="2024">
-<meta name="citation_online_date" content="2024-04-24">
+<meta name="citation_online_date" content="2024-04-25">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="BARG Curtin University">
 <meta name="citation_reference" content="citation_title=Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands);,citation_author=José Marrero;,citation_author=Alicia García;,citation_author=Manuel Berrocoso;,citation_author=Ángeles Llinares;,citation_author=Antonio Rodríguez-Losada;,citation_author=R. Ortiz;,citation_publication_date=2019-07;,citation_cover_date=2019-07;,citation_year=2019;,citation_doi=10.1186/s13617-019-0085-5;,citation_volume=8;,citation_journal_title=Journal of Applied Volcanology;">
@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </div>
                 <div class="quarto-title-meta-contents">
                     <p class="affiliation">
-                        Curtin University
+                        Business Information Systems, Curtin University, Perth Australia
                       </p>
                   </div>
                     </div>
@@ -123,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">April 24, 2024</p>
+              <p class="date">April 25, 2024</p>
             </div>
           </div>
           
@@ -181,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul>
 </nav>
 </div>
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -192,19 +192,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
-<p>The advent of large language models (LLMs) such as OpenAI’s GPT series has heralded a significant shift in the paradigms of programming and computational linguistics. Traditionally, the interaction with these models involved substantial coding efforts and a deep understanding of machine learning algorithms. However, a more accessible approach has surfaced, known as prompt engineering, which allows even those with minimal coding expertise to leverage the advanced capabilities of LLMs effectively. This paper delves into prompt engineering, defined as the strategic formulation of input prompts to maximize the utility of LLMs without internal model retraining. We argue that prompt engineering is an underappreciated yet powerful tool for developers, capable of achieving substantial outcomes with minimal effort.</p>
-<p>Prompt engineering is defined as the strategic formulation of input queries to maximize the utility and accuracy of responses from LLMs. Initially perceived with skepticism, this methodology has quickly proven its worth, demonstrating that a well-crafted prompt can extract considerable value from these models with relatively low effort. The essence of prompt engineering lies not in rewriting the underlying algorithms of LLMs but in creatively interacting with them, using plain language to “program” or guide the models towards desired outputs.</p>
+<p>The advent of large language models (LLMs) such as OpenAI’s GPT series has heralded a significant shift in the paradigms of programming and computational linguistics. Traditionally, the interaction with these models involved substantial coding efforts and a deep understanding of machine learning algorithms. However, a more accessible approach has surfaced, known as prompt engineering, which allows even those with minimal coding expertise to leverage the advanced capabilities of LLMs effectively. This paper delves into prompt engineering, defined as the strategic formulation of input prompts to maximise the utility of LLMs without internal model retraining. We argue that prompt engineering is an underappreciated yet powerful tool for developers, capable of achieving substantial outcomes with minimal effort.</p>
+<p>Prompt engineering is defined as the strategic formulation of input queries to maximise the utility and accuracy of responses from LLMs. Initially perceived with skepticism, this methodology has quickly proven its worth, demonstrating that a well-crafted prompt can extract considerable value from these models with relatively low effort. The essence of prompt engineering lies not in rewriting the underlying algorithms of LLMs but in creatively interacting with them, using plain language to “program” or guide the models towards desired outputs.</p>
 <p>The primary objective of this paper is to systematically explore and validate the effectiveness of various prompt engineering techniques. By comparing the performance of “good” versus “poor” prompts, this research aims to elucidate the impact of prompt construction on the quality of responses generated by LLMs. We employ a series of metrics, such as BERTscore and Perplexity, to quantitatively assess the responses, providing a rigorous analysis of how different prompting strategies affect the output of language models. This comparative study is intended to offer valuable insights for both developers and researchers, enabling them to harness the full potential of LLMs in diverse applications ranging from automated content generation to complex problem-solving tasks.</p>
 <p>This paper includes embedded interactive elements that allow readers to directly engage with and replicate our computational analyses. By providing live data and code within the document, we aim to enhance transparency and applicability of our findings. It allows readers to not only digest the findings but also interact with the presented data and analyses, potentially replicating or building upon the research in real-time. This integration promises to bridge the gap between theoretical exploration and practical application, making the research accessible and applicable to a broad audience interested in the future of artificial intelligence and machine learning.</p>
 </section>
 <section id="prompt-engineering-a-dual-level-analysis" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="prompt-engineering-a-dual-level-analysis"><span class="header-section-number">2</span> Prompt Engineering: A Dual-Level Analysis</h2>
-<p>Prompt engineering operates at two distinct levels. The first, an intuitive and straightforward approach, utilizes platforms like ChatGPT to execute simple tasks (e.g., text summarization, email drafting). Although this method is accessible, its integration into larger systems is non-trivial. The second level involves a more sophisticated interaction through programming interfaces, such as Python APIs, enabling the integration of LLM responses into broader software ecosystems. This paper illustrates these levels with practical examples, including the development of an LLM-powered automatic grading system for educational applications.</p>
+<p>Prompt engineering operates at two distinct levels. The first, an intuitive and straightforward approach, utilises platforms like ChatGPT to execute simple tasks (e.g., text summarisation, email drafting). Although this method is accessible, its integration into larger systems is non-trivial. The second level involves a more sophisticated interaction through programming interfaces, such as Python APIs, enabling the integration of LLM responses into broader software ecosystems. This paper illustrates these levels with practical examples, including the development of an LLM-powered automatic grading system for educational applications.</p>
 </section>
 <section id="methodology-empirical-techniques-in-prompt-engineering" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="methodology-empirical-techniques-in-prompt-engineering"><span class="header-section-number">3</span> Methodology: Empirical Techniques in Prompt Engineering</h2>
-<p>We categorize prompt engineering as an empirical art, where the composition and formatting of prompts are tailored to enhance model performance on specific tasks. This approach draws on the inherent desire of language models to complete text-based tasks, effectively “tricking” them into performing complex functions beyond simple text generation. We outline various techniques, such as the use of descriptive language, structured prompts, and the chaining of thought processes, to improve the interaction quality with LLMs.</p>
-<p>This study systematically investigates the impact of prompt engineering on the performance of large language models (LLMs). Our approach involves comparing the efficacy of well-crafted (“good”) prompts against less optimized (“poor”) prompts in eliciting accurate and relevant responses from the models. We detail the experimental design, tools utilized, and metrics applied for evaluating the results.</p>
+<p>We categorise prompt engineering as an empirical art, where the composition and formatting of prompts are tailored to enhance model performance on specific tasks. This approach draws on the inherent desire of language models to complete text-based tasks, effectively “tricking” them into performing complex functions beyond simple text generation. We outline various techniques, such as the use of descriptive language, structured prompts, and the chaining of thought processes, to improve the interaction quality with LLMs.</p>
+<p>This study systematically investigates the impact of prompt engineering on the performance of large language models (LLMs). Our approach involves comparing the efficacy of well-crafted (“good”) prompts against less optimised (“poor”) prompts in eliciting accurate and relevant responses from the models. We detail the experimental design, tools utilised, and metrics applied for evaluating the results.</p>
 <section id="experimental-design" class="level4" data-number="3.0.1">
 <h4 data-number="3.0.1" class="anchored" data-anchor-id="experimental-design"><span class="header-section-number">3.0.1</span> Experimental Design</h4>
 <p>The experiments are structured to assess two main types of prompts:</p>
@@ -212,14 +212,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Good Prompts</strong>: These are designed with specific linguistic and structural techniques believed to enhance the LLM’s understanding and response quality. Techniques include using descriptive language, structuring content, and employing contextual cues that guide the model towards the desired type of response.</p></li>
 <li><p><strong>Poor Prompts</strong>: These lack the strategic elements present in good prompts and typically include vague or ambiguous language that may lead to less accurate or relevant responses from the model.</p></li>
 </ol>
-<p>For each type of prompt, identical tasks are presented to the LLM to ensure that the only variable affecting output quality is the prompt construction itself. Tasks include generating text-based responses across several domains, such as summarizing passages, answering questions, and creating content based on given specifications.</p>
+<p>For each type of prompt, identical tasks are presented to the LLM to ensure that the only variable affecting output quality is the prompt construction itself. Tasks include generating text-based responses across several domains, such as summarising passages, answering questions, and creating content based on given specifications.</p>
 </section>
 <section id="tools-and-models" class="level4" data-number="3.0.2">
 <h4 data-number="3.0.2" class="anchored" data-anchor-id="tools-and-models"><span class="header-section-number">3.0.2</span> Tools and Models</h4>
-<p>The study utilizes OpenAI’s GPT-3 model due to its widespread adoption and robust performance across a variety of natural language processing tasks. We interact with GPT-3 using the following tools:</p>
+<p>The study utilises OpenAI’s GPT-3 model due to its widespread adoption and robust performance across a variety of natural language processing tasks. We interact with GPT-3 using the following tools:</p>
 <ul>
 <li><p><strong>LangChain</strong>: A Python library designed to facilitate the development of applications on top of LLMs. LangChain allows for structured interaction with GPT-3, managing prompt templates, and integrating response parsing mechanisms.</p></li>
-<li><p><strong>Quarto</strong>: To document and share our findings, we use Quarto, an interactive computing framework that allows embedding live code, visualizations, and narrative text. This choice supports the dynamic presentation of our methods and results, enabling readers to engage directly with the analyses.</p></li>
+<li><p><strong>Quarto</strong>: To document and share our findings, we use Quarto, an interactive computing framework that allows embedding live code, visualisations, and narrative text. This choice supports the dynamic presentation of our methods and results, enabling readers to engage directly with the analyses.</p></li>
 </ul>
 </section>
 <section id="metrics-for-evaluation" class="level4" data-number="3.0.3">
@@ -233,7 +233,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="data-collection-and-analysis" class="level4" data-number="3.0.4">
 <h4 data-number="3.0.4" class="anchored" data-anchor-id="data-collection-and-analysis"><span class="header-section-number">3.0.4</span> Data Collection and Analysis</h4>
-<p>Responses from the LLM are collected under controlled conditions to ensure consistency across tests. Each response is logged along with the prompt used, allowing for detailed comparative analysis. The data are analyzed using statistical tools to identify significant differences in performance metrics between good and poor prompts. Visualizations are created to illustrate these differences clearly, providing both quantitative and qualitative insights into the effectiveness of various prompt engineering techniques.</p>
+<p>Responses from the LLM are collected under controlled conditions to ensure consistency across tests. Each response is logged along with the prompt used, allowing for detailed comparative analysis. The data are analysed using statistical tools to identify significant differences in performance metrics between good and poor prompts. Visualisations are created to illustrate these differences clearly, providing both quantitative and qualitative insights into the effectiveness of various prompt engineering techniques.</p>
 </section>
 <section id="comparative-approach" class="level4" data-number="3.0.5">
 <h4 data-number="3.0.5" class="anchored" data-anchor-id="comparative-approach"><span class="header-section-number">3.0.5</span> Comparative Approach</h4>
@@ -254,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Additionally, human evaluation can provide valuable qualitative insights into the strengths and weaknesses of each prompt, complementing the quantitative metrics.</p>
 <p>This comparative approach leverages the fact that for the same topic, a well-crafted prompt should elicit a more relevant and high-quality response from the language model. By directly comparing the responses, you can empirically evaluate the effectiveness of your prompt engineering efforts.[1][2][4][5]</p>
 <p>Citations: [1] https://quaintitative.com/compare-llms/ [2] https://andrewmaynard.net/comparative-prompts/ [3] https://www.vcestudyguides.com/blog/the-five-types-of-text-response-prompts-archive [4] https://agio.com/comparing-ai-prompting-strategies/ [5] https://typeset.io/questions/how-do-different-types-of-prompts-affect-the-quality-of-2rmbjrcisy</p>
-<p>Through this comprehensive methodology, the study aims to provide actionable insights into the art of prompt engineering, guiding users on how to best utilize LLMs for a range of applications.</p>
+<p>Through this comprehensive methodology, the study aims to provide actionable insights into the art of prompt engineering, guiding users on how to best utilise LLMs for a range of applications.</p>
 <p>Even without a predefined reference text, you can still compare the responses from a good prompt and a poor prompt using metrics like BERTScore or BLEU score. Here’s how you can approach this:</p>
 <ol type="1">
 <li>Obtain responses from the language model using both the good prompt and the poor prompt.</li>
@@ -273,27 +273,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="results" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="results"><span class="header-section-number">4</span> Results</h2>
-<p>This section presents the comprehensive results of our investigation into the effectiveness of prompt engineering techniques for enhancing the performance of large language models (LLMs). Our analysis focuses on quantitatively evaluating the impact of well-constructed versus poorly constructed prompts on the quality of the responses generated by LLMs. We utilize three established metrics for this evaluation: BLEU Score, ROUGE Score, and BERTscore, each providing insights into different aspects of text quality such as precision, recall, and semantic similarity. The results clearly demonstrate the significant influence that prompt construction can have on the accuracy, relevance, and fluency of the generated text. Additionally, we provide detailed, interactive examples that not only illustrate these effects but also allow readers to explore the nuances of prompt engineering through live code. These examples showcase practical applications and underscore the practical implications of our findings, bridging theoretical research with actionable insights. Through dynamic visualizations and interactive Quarto cells, readers are invited to engage directly with the data, enhancing their understanding of how strategic prompt design can be effectively utilized in real-world applications.</p>
+<p>This section presents the comprehensive results of our investigation into the effectiveness of prompt engineering techniques for enhancing the performance of large language models (LLMs). Our analysis focuses on quantitatively evaluating the impact of well-constructed versus poorly constructed prompts on the quality of the responses generated by LLMs. We utilise three established metrics for this evaluation: BLEU Score, ROUGE Score, and BERTscore, each providing insights into different aspects of text quality such as precision, recall, and semantic similarity. The results clearly demonstrate the significant influence that prompt construction can have on the accuracy, relevance, and fluency of the generated text. Additionally, we provide detailed, interactive examples that not only illustrate these effects but also allow readers to explore the nuances of prompt engineering through live code. These examples showcase practical applications and underscore the practical implications of our findings, bridging theoretical research with actionable insights. Through dynamic visualisations and interactive Quarto cells, readers are invited to engage directly with the data, enhancing their understanding of how strategic prompt design can be effectively utilised in real-world applications.</p>
 <section id="overview-of-experimental-results" class="level3" data-number="4.1">
 <h3 data-number="4.1" class="anchored" data-anchor-id="overview-of-experimental-results"><span class="header-section-number">4.1</span> Overview of Experimental Results</h3>
 <ul>
 <li>Begin with a summary of the findings from the comparative analysis of good vs.&nbsp;poor prompts. This would involve presenting quantitative data from BERTscore, Perplexity, and manual reviews.</li>
 <li>Include charts, graphs, or tables that clearly depict the differences in LLM performance based on the type of prompt used.</li>
-<li>Compare the outputs and effectiveness of the LLM across different prompting techniques illustrated in the detailed examples and the case study. This section would analyze the broader implications of prompt engineering on practical applications.</li>
+<li>Compare the outputs and effectiveness of the LLM across different prompting techniques illustrated in the detailed examples and the case study. This section would analyse the broader implications of prompt engineering on practical applications.</li>
 <li>Discuss how variations in prompt construction can lead to significant differences in output quality and application functionality.</li>
 </ul>
 </section>
 <section id="detailed-examples-of-good-vs.-poor-prompts" class="level3" data-number="4.2">
 <h3 data-number="4.2" class="anchored" data-anchor-id="detailed-examples-of-good-vs.-poor-prompts"><span class="header-section-number">4.2</span> Detailed Examples of Good vs.&nbsp;Poor Prompts</h3>
-<p>This section provides detailed descriptions and Python code examples for various prompt engineering tricks used to enhance the performance of large language models (LLMs). Each strategy is designed to optimize the interaction with LLMs in different contexts, demonstrating practical applications and potential benefits.</p>
+<p>This section provides detailed descriptions and Python code examples for various prompt engineering tricks used to enhance the performance of large language models (LLMs). Each strategy is designed to optimise the interaction with LLMs in different contexts, demonstrating practical applications and potential benefits.</p>
 <section id="strategy-1-be-descriptive-more-is-better" class="level4" data-number="4.2.1">
 <h4 data-number="4.2.1" class="anchored" data-anchor-id="strategy-1-be-descriptive-more-is-better"><span class="header-section-number">4.2.1</span> Strategy 1: Be Descriptive (More is Better)</h4>
-<p><strong>Explanation</strong>: Providing detailed information within prompts helps the LLM understand the context better, leading to more accurate and relevant responses. This strategy is particularly useful in scenarios where the details are critical to the task, such as generating personalized content or specific instructions.</p>
+<p><strong>Explanation</strong>: Providing detailed information within prompts helps the LLM understand the context better, leading to more accurate and relevant responses. This strategy is particularly useful in scenarios where the details are critical to the task, such as generating personalised content or specific instructions.</p>
 <p><strong>Python Code Example</strong>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the OpenAI GPT library</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openai <span class="im">import</span> ChatCompletion</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the model with your API key</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialise the model with your API key</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>openai_api_key <span class="op">=</span> <span class="st">'your-api-key'</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>chat_model <span class="op">=</span> ChatCompletion(api_key<span class="op">=</span>openai_api_key, model<span class="op">=</span><span class="st">"gpt-3.5-turbo"</span>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
@@ -320,7 +320,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="st">Subtitle: Exploring the latest breakthroughs in sustainable power sources</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="st">Title: The Future of AI in Medicine</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="st">Subtitle: How AI is revolutionizing diagnostics and patient care</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="st">Subtitle: How AI is revolutionising diagnostics and patient care</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="st">Title: Innovations in Educational Technology</span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="st">Subtitle: New tools that are transforming how students learn</span></span>
@@ -337,7 +337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="strategy-3-use-structured-text" class="level4" data-number="4.2.3">
 <h4 data-number="4.2.3" class="anchored" data-anchor-id="strategy-3-use-structured-text"><span class="header-section-number">4.2.3</span> Strategy 3: Use Structured Text</h4>
-<p><strong>Explanation</strong>: Structuring prompts in a clear and organized manner can help the model parse and process the information more effectively. This approach is ideal for tasks that require data extraction, summarization, or any application where clarity and precision are crucial.</p>
+<p><strong>Explanation</strong>: Structuring prompts in a clear and organised manner can help the model parse and process the information more effectively. This approach is ideal for tasks that require data extraction, summarisation, or any application where clarity and precision are crucial.</p>
 <p><strong>Python Code Example</strong>:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a structured prompt for a recipe</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="st">"""</span></span>
@@ -382,7 +382,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the OpenAI GPT library</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openai <span class="im">import</span> ChatCompletion</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the model with your API key</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialise the model with your API key</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>openai_api_key <span class="op">=</span> <span class="st">'your-api-key'</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>chat_model <span class="op">=</span> ChatCompletion(api_key<span class="op">=</span>openai_api_key, model<span class="op">=</span><span class="st">"gpt-3.5-turbo"</span>)</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
@@ -448,9 +448,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>good_response <span class="op">=</span> <span class="st">"The theory of relativity, proposed by Albert Einstein, revolves around two main ideas: special relativity and general relativity. Special relativity states that the laws of physics are the same for all non-accelerating observers, and that the speed of light in a vacuum is independent of the motion of all observers. General relativity describes gravity not as a force, but as a consequence of the curvature of spacetime caused by the presence of mass and energy."</span></span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>poor_response <span class="op">=</span> <span class="st">"Relativity is a scientific theory developed by Albert Einstein."</span></span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Tokenize the responses</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>good_response_tokens <span class="op">=</span> nltk.word_tokenize(good_response)</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>poor_response_tokens <span class="op">=</span> nltk.word_tokenize(poor_response)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Tokenise the responses</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>good_response_tokens <span class="op">=</span> nltk.word_tokenise(good_response)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>poor_response_tokens <span class="op">=</span> nltk.word_tokenise(poor_response)</span>
 <span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate BLEU scores</span></span>
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>bleu_score_good_as_ref <span class="op">=</span> sentence_bleu([good_response_tokens], poor_response_tokens)</span>
@@ -460,10 +460,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"BLEU score (poor response as reference): </span><span class="sc">{</span>bleu_score_poor_as_ref<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here’s how the code works:</p>
 <ol type="1">
-<li>We import the necessary modules and download the required NLTK data for tokenization.</li>
+<li>We import the necessary modules and download the required NLTK data for tokenisation.</li>
 <li>We define the good and poor prompts as strings.</li>
 <li>We obtain the responses from the language model for the good and poor prompts. In this example, we’ve hardcoded the responses, but in practice, you would replace these with your own code to generate responses from the language model.</li>
-<li>We tokenize the good and poor responses using <code>nltk.word_tokenize</code>.</li>
+<li>We tokenise the good and poor responses using <code>nltk.word_tokenise</code>.</li>
 <li>We calculate the BLEU scores in both directions:
 <ul>
 <li><code>bleu_score_good_as_ref</code> treats the good prompt response as the reference and the poor prompt response as the candidate.</li>
@@ -484,7 +484,7 @@ BLEU score (poor response as reference): 0.087</code></pre>
 </section>
 <section id="rouge-recall-oriented-understudy-for-gisting-evaluation" class="level4" data-number="4.3.2">
 <h4 data-number="4.3.2" class="anchored" data-anchor-id="rouge-recall-oriented-understudy-for-gisting-evaluation"><span class="header-section-number">4.3.2</span> ROUGE (Recall-Oriented Understudy for Gisting Evaluation)</h4>
-<p>The ROGUE score is a set of metrics used primarily for evaluating automatic summarization and machine translation. It measures the overlap between the system-generated text and reference texts, focusing on the number of overlapping units such as n-grams, word sequences, and word pairs. The most commonly used variants are ROUGE-N (which measures n-gram overlap), ROUGE-L (which measures the longest common subsequence), and ROUGE-S (which measures skip-bigram overlap). Below, we implement the ROUGE-L score in Python to evaluate the quality of responses from language models. This will require the installation of the <code>rouge</code> package, which can be done using pip:</p>
+<p>The ROGUE score is a set of metrics used primarily for evaluating automatic summarisation and machine translation. It measures the overlap between the system-generated text and reference texts, focusing on the number of overlapping units such as n-grams, word sequences, and word pairs. The most commonly used variants are ROUGE-N (which measures n-gram overlap), ROUGE-L (which measures the longest common subsequence), and ROUGE-S (which measures skip-bigram overlap). Below, we implement the ROUGE-L score in Python to evaluate the quality of responses from language models. This will require the installation of the <code>rouge</code> package, which can be done using pip:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install rouge</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
@@ -493,7 +493,7 @@ BLEU score (poor response as reference): 0.087</code></pre>
 <p>Here’s an example of how you can calculate the ROUGE-L score for a language model’s responses using the Python <code>rouge</code> library:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rouge <span class="im">import</span> Rouge</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the ROUGE scorer</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialise the ROUGE scorer</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>rouge <span class="op">=</span> Rouge()</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Example reference and system-generated summaries</span></span>
@@ -523,7 +523,7 @@ BLEU score (poor response as reference): 0.087</code></pre>
 <li><strong>Contextual Relevance</strong>: While ROUGE scores can provide objective measures of textual overlap, they might not fully account for the semantic accuracy or contextual relevance of the generated text. For more nuanced evaluations, consider combining ROUGE with manual qualitative assessments.</li>
 <li><strong>Variants</strong>: Depending on the specific requirements of your evaluation, you might choose different ROUGE metrics (like ROUGE-N for n-gram overlap, or ROUGE-S for skip-bigrams) to focus on different aspects of the comparison.</li>
 </ul>
-<p>This approach allows you to quantitatively assess how well a language model’s responses match a reference, providing a standardized measure to compare different prompting strategies or model configurations in your research or application development.</p>
+<p>This approach allows you to quantitatively assess how well a language model’s responses match a reference, providing a standardised measure to compare different prompting strategies or model configurations in your research or application development.</p>
 </section>
 <section id="using-bertscore-without-a-predefined-reference" class="level3" data-number="4.7">
 <h3 data-number="4.7" class="anchored" data-anchor-id="using-bertscore-without-a-predefined-reference"><span class="header-section-number">4.7</span> Using BERTscore without a Predefined Reference</h3>
@@ -543,7 +543,7 @@ BLEU score (poor response as reference): 0.087</code></pre>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming you've obtained responses from the model</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>response_from_poor_prompt <span class="op">=</span> <span class="st">"The quick brown fox tries to jump but fails."</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>response_from_good_prompt <span class="op">=</span> <span class="st">"The quick brown fox jumps over the lazy dog."</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>response_from_good_prompt <span class="op">=</span> <span class="st">"The quick brown fox jumps over the lasy dog."</span></span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Using each other as references</span></span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>P_poor, R_poor, F1_poor <span class="op">=</span> score([response_from_poor_prompt], [response_from_good_prompt], lang<span class="op">=</span><span class="st">"en"</span>)</span>
@@ -568,13 +568,13 @@ BLEU score (poor response as reference): 0.087</code></pre>
 <section id="considerations" class="level3" data-number="4.9">
 <h3 data-number="4.9" class="anchored" data-anchor-id="considerations"><span class="header-section-number">4.9</span> Considerations</h3>
 <p>This method of using responses as mutual references can be particularly useful when direct comparison metrics are needed to evaluate the effectiveness of different prompts in eliciting detailed and relevant responses. It is somewhat subjective, as it assumes that one of the responses contains sufficient quality content to serve as a benchmark—a fair assumption if one prompt is indeed superior.</p>
-<p>By comparing these metrics, you can objectively analyze which prompt results in a better response in terms of information richness and relevance, thereby supporting the effectiveness of your prompt engineering techniques.</p>
+<p>By comparing these metrics, you can objectively analyse which prompt results in a better response in terms of information richness and relevance, thereby supporting the effectiveness of your prompt engineering techniques.</p>
 </section>
 </section>
 <section id="case-study-building-an-automatic-grader" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="case-study-building-an-automatic-grader"><span class="header-section-number">5</span> Case Study: Building an Automatic Grader</h2>
 <p>The practical application of prompt engineering is demonstrated through the development of an automatic grader for educational purposes. Using LangChain, a Python library for LLM integration, we construct a prompt-based system that evaluates student responses to open-ended questions. This system exemplifies the shift from traditional programming methods to a model where significant portions of logic are outsourced to an LLM, highlighting the efficiency and scalability of prompt engineering.</p>
-<p>This section provides a detailed guide to building an automatic grader application utilizing LangChain, a Python library designed to simplify the integration of large language models (LLMs) in application development. The application leverages prompt engineering to evaluate student responses in a high school history class, demonstrating the practical implementation of LLMs in educational settings.</p>
+<p>This section provides a detailed guide to building an automatic grader application utilising LangChain, a Python library designed to simplify the integration of large language models (LLMs) in application development. The application leverages prompt engineering to evaluate student responses in a high school history class, demonstrating the practical implementation of LLMs in educational settings.</p>
 <section id="overview" class="level4" data-number="5.0.1">
 <h4 data-number="5.0.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">5.0.1</span> Overview</h4>
 <p>The automatic grader application is designed to assess short-answer questions, where answers might vary but still be correct. The grader needs to handle different phrasings, synonyms, and minor spelling errors effectively.</p>
@@ -606,8 +606,8 @@ BLEU score (poor response as reference): 0.087</code></pre>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="st">**Student's Answer:** </span><span class="sc">{student_answer}</span></span>
 <span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Step 3: Initialize LangChain</strong></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define and initialize the ChatOpenAI model with your OpenAI API key</span></span>
+<p><strong>Step 3: Initialise LangChain</strong></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define and initialise the ChatOpenAI model with your OpenAI API key</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>chat_model <span class="op">=</span> ChatOpenAI(openai_api_key<span class="op">=</span><span class="st">"your-openai-api-key"</span>, temperature<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a prompt template object</span></span>
@@ -640,12 +640,12 @@ BLEU score (poor response as reference): 0.087</code></pre>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> chain.run({<span class="st">'question'</span>: question, <span class="st">'correct_answer'</span>: correct_answer, <span class="st">'student_answer'</span>: student_answer})</span>
 <span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Question: </span><span class="sc">{</span>question<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Student Answer: </span><span class="sc">{</span>student_answer<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span><span class="st">'Correct'</span> <span class="cf">if</span> result <span class="cf">else</span> <span class="st">'Incorrect'</span><span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This example application showcases how LangChain can be utilized to develop practical, LLM-integrated solutions for real-world problems such as grading. The automatic grader is not only efficient but also demonstrates the capability of LLMs to handle variability in natural language processing tasks, making it an ideal solution for educational applications.</p>
+<p>This example application showcases how LangChain can be utilised to develop practical, LLM-integrated solutions for real-world problems such as grading. The automatic grader is not only efficient but also demonstrates the capability of LLMs to handle variability in natural language processing tasks, making it an ideal solution for educational applications.</p>
 </section>
 </section>
 <section id="discussion-efficacy-and-limitations-of-prompt-engineering" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="discussion-efficacy-and-limitations-of-prompt-engineering"><span class="header-section-number">6</span> Discussion: Efficacy and Limitations of Prompt Engineering</h2>
-<p>While prompt engineering offers substantial advantages, including significant reductions in development time and increased flexibility, it is not without limitations. The effectiveness of prompt strategies can vary significantly between different LLM versions, and the approach may incur considerable computational costs. Furthermore, the general-purpose nature of large models like ChatGPT may not be optimal for specialized tasks, which could be better served by fine-tuning specific models tailored to particular needs.</p>
+<p>While prompt engineering offers substantial advantages, including significant reductions in development time and increased flexibility, it is not without limitations. The effectiveness of prompt strategies can vary significantly between different LLM versions, and the approach may incur considerable computational costs. Furthermore, the general-purpose nature of large models like ChatGPT may not be optimal for specialised tasks, which could be better served by fine-tuning specific models tailored to particular needs.</p>
 </section>
 <section id="conclusion" class="level2" data-number="7">
 <h2 data-number="7" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">7</span> Conclusion</h2>
@@ -668,7 +668,7 @@ BLEU score (poor response as reference): 0.087</code></pre>
   author = {Borck, Michael},
   title = {Revisiting {Prompt} {Engineering:} {Strategic} {Interactions}
     with {Large} {Language} {Models} for {Application} {Development}},
-  date = {2024-04-24},
+  date = {2024-04-25},
   langid = {en},
   abstract = {Prompt engineering has emerged as a crucial technique for
     leveraging the capabilities of large language models (LLMs) in
@@ -682,7 +682,7 @@ BLEU score (poor response as reference): 0.087</code></pre>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-borck2024" class="csl-entry quarto-appendix-citeas" role="listitem">
 Borck, Michael. 2024. <span>“Revisiting Prompt Engineering: Strategic
 Interactions with Large Language Models for Application
-Development.”</span> BARG Curtin University. April 24, 2024.
+Development.”</span> BARG Curtin University. April 25, 2024.
 </div></div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -720,18 +720,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -763,7 +752,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -771,7 +782,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
