@@ -3,6 +3,7 @@ title: "Revisiting Prompt Engineering: Strategic Interactions with Large Languag
 authors:
 author:
   - name: Michael Borck
+    affiliation: Business Information Systems, Curtin University, Perth Australia
     orcid: 0000-0002-0950-6396
     corresponding: true
     email: michael.borck@curtin.edu.au
@@ -10,9 +11,7 @@ author:
       - Investigation
       - Project administration
       - Software
-      - Visualisation
-    affiliations:
-      - Curtin University
+      - Visualisation 
 keywords:
   - Prompt Engineering
   - Large Language Models (LLMs)
@@ -22,38 +21,38 @@ keywords:
 abstract: | 
   Prompt engineering has emerged as a crucial technique for leveraging the capabilities of large language models (LLMs) in application development. This paper explores the nuances of prompt engineering, presenting it not merely as a tool for interaction but as a programming paradigm that significantly eases the deployment of LLM capabilities into practical applications. We examine various levels and strategies of prompt engineering, highlighting their practical implications and potential for simplifying complex tasks.
 plain-language-summary: | 
-  The paper discusses how prompt engineering can be used as a programming paradigm to effectively integrate large language models (LLMs) like GPT into software development. It describes two levels of prompt engineering: a basic level for straightforward tasks such as email drafting, and a more complex level involving programming interfaces for deeper software integration, such as automatic grading systems. The technique is portrayed as an empirical art that simplifies the development process by minimizing coding efforts and maximizing AI utility, although it faces challenges such as variability in effectiveness and potential high costs. The paper advocates for more research to enhance the scalability and efficiency of prompt engineering.
+  The paper discusses how prompt engineering can be used as a programming paradigm to effectively integrate large language models (LLMs) like GPT into software development. It describes two levels of prompt engineering: a basic level for straightforward tasks such as email drafting, and a more complex level involving programming interfaces for deeper software integration, such as automatic grading systems. The technique is portrayed as an empirical art that simplifies the development process by minimising coding efforts and maximising AI utility, although it faces challenges such as variability in effectiveness and potential high costs. The paper advocates for more research to enhance the scalability and efficiency of prompt engineering.
 key-points:
   - "Prompt Engineering Paradigm: Prompt engineering is presented as a distinct programming paradigm that simplifies LLM deployment in applications."
   - "Levels of Prompt Engineering**: The paper distinguishes between basic, user-friendly prompt interactions and advanced integrations using programming interfaces."
-  - "Methodological Approach**: Prompt engineering is characterized as an empirical technique that tailors prompts to optimize LLM performance for specific tasks."
+  - "Methodological Approach**: Prompt engineering is characterised as an empirical technique that tailors prompts to optimise LLM performance for specific tasks."
   - "Case Study Example**: A case study on an automatic grader developed with LangChain demonstrates prompt engineering’s practical application in education."
-  - "Efficacy and Limitations**: The efficacy of prompt engineering varies by LLM version and may incur high computational costs, with limited effectiveness for specialized tasks."
+  - "Efficacy and Limitations**: The efficacy of prompt engineering varies by LLM version and may incur high computational costs, with limited effectiveness for specialised tasks."
   - "Future Research**: Future research should explore prompt engineering’s scalability and integration with fine-tuning techniques, alongside comparative effectiveness studies."
 date: last-modified
 bibliography: references.bib
 citation:
-  container-title: BARG Curtin University
+  container-title: "BARG Curtin University"
 number-sections: true
 ---
 
 ## Introduction
 
-The advent of large language models (LLMs) such as OpenAI's GPT series has heralded a significant shift in the paradigms of programming and computational linguistics. Traditionally, the interaction with these models involved substantial coding efforts and a deep understanding of machine learning algorithms. However, a more accessible approach has surfaced, known as prompt engineering, which allows even those with minimal coding expertise to leverage the advanced capabilities of LLMs effectively.  This paper delves into prompt engineering, defined as the strategic formulation of input prompts to maximize the utility of LLMs without internal model retraining. We argue that prompt engineering is an underappreciated yet powerful tool for developers, capable of achieving substantial outcomes with minimal effort.
+The advent of large language models (LLMs) such as OpenAI's GPT series has heralded a significant shift in the paradigms of programming and computational linguistics. Traditionally, the interaction with these models involved substantial coding efforts and a deep understanding of machine learning algorithms. However, a more accessible approach has surfaced, known as prompt engineering, which allows even those with minimal coding expertise to leverage the advanced capabilities of LLMs effectively.  This paper delves into prompt engineering, defined as the strategic formulation of input prompts to maximise the utility of LLMs without internal model retraining. We argue that prompt engineering is an underappreciated yet powerful tool for developers, capable of achieving substantial outcomes with minimal effort.
 
-Prompt engineering is defined as the strategic formulation of input queries to maximize the utility and accuracy of responses from LLMs. Initially perceived with skepticism, this methodology has quickly proven its worth, demonstrating that a well-crafted prompt can extract considerable value from these models with relatively low effort. The essence of prompt engineering lies not in rewriting the underlying algorithms of LLMs but in creatively interacting with them, using plain language to "program" or guide the models towards desired outputs.
+Prompt engineering is defined as the strategic formulation of input queries to maximise the utility and accuracy of responses from LLMs. Initially perceived with skepticism, this methodology has quickly proven its worth, demonstrating that a well-crafted prompt can extract considerable value from these models with relatively low effort. The essence of prompt engineering lies not in rewriting the underlying algorithms of LLMs but in creatively interacting with them, using plain language to "program" or guide the models towards desired outputs.
 
 The primary objective of this paper is to systematically explore and validate the effectiveness of various prompt engineering techniques. By comparing the performance of "good" versus "poor" prompts, this research aims to elucidate the impact of prompt construction on the quality of responses generated by LLMs. We employ a series of metrics, such as BERTscore and Perplexity, to quantitatively assess the responses, providing a rigorous analysis of how different prompting strategies affect the output of language models. This comparative study is intended to offer valuable insights for both developers and researchers, enabling them to harness the full potential of LLMs in diverse applications ranging from automated content generation to complex problem-solving tasks.
 
 This paper includes embedded interactive elements that allow readers to directly engage with and replicate our computational analyses. By providing live data and code within the document, we aim to enhance transparency and applicability of our findings. It allows readers to not only digest the findings but also interact with the presented data and analyses, potentially replicating or building upon the research in real-time. This integration promises to bridge the gap between theoretical exploration and practical application, making the research accessible and applicable to a broad audience interested in the future of artificial intelligence and machine learning.
 
 ## Prompt Engineering: A Dual-Level Analysis
-Prompt engineering operates at two distinct levels. The first, an intuitive and straightforward approach, utilizes platforms like ChatGPT to execute simple tasks (e.g., text summarization, email drafting). Although this method is accessible, its integration into larger systems is non-trivial. The second level involves a more sophisticated interaction through programming interfaces, such as Python APIs, enabling the integration of LLM responses into broader software ecosystems. This paper illustrates these levels with practical examples, including the development of an LLM-powered automatic grading system for educational applications.
+Prompt engineering operates at two distinct levels. The first, an intuitive and straightforward approach, utilises platforms like ChatGPT to execute simple tasks (e.g., text summarisation, email drafting). Although this method is accessible, its integration into larger systems is non-trivial. The second level involves a more sophisticated interaction through programming interfaces, such as Python APIs, enabling the integration of LLM responses into broader software ecosystems. This paper illustrates these levels with practical examples, including the development of an LLM-powered automatic grading system for educational applications.
 
 ## Methodology: Empirical Techniques in Prompt Engineering
-We categorize prompt engineering as an empirical art, where the composition and formatting of prompts are tailored to enhance model performance on specific tasks. This approach draws on the inherent desire of language models to complete text-based tasks, effectively "tricking" them into performing complex functions beyond simple text generation. We outline various techniques, such as the use of descriptive language, structured prompts, and the chaining of thought processes, to improve the interaction quality with LLMs.
+We categorise prompt engineering as an empirical art, where the composition and formatting of prompts are tailored to enhance model performance on specific tasks. This approach draws on the inherent desire of language models to complete text-based tasks, effectively "tricking" them into performing complex functions beyond simple text generation. We outline various techniques, such as the use of descriptive language, structured prompts, and the chaining of thought processes, to improve the interaction quality with LLMs.
 
-This study systematically investigates the impact of prompt engineering on the performance of large language models (LLMs). Our approach involves comparing the efficacy of well-crafted ("good") prompts against less optimized ("poor") prompts in eliciting accurate and relevant responses from the models. We detail the experimental design, tools utilized, and metrics applied for evaluating the results.
+This study systematically investigates the impact of prompt engineering on the performance of large language models (LLMs). Our approach involves comparing the efficacy of well-crafted ("good") prompts against less optimised ("poor") prompts in eliciting accurate and relevant responses from the models. We detail the experimental design, tools utilised, and metrics applied for evaluating the results.
 
 #### Experimental Design
 
@@ -63,15 +62,15 @@ The experiments are structured to assess two main types of prompts:
 
 2. **Poor Prompts**: These lack the strategic elements present in good prompts and typically include vague or ambiguous language that may lead to less accurate or relevant responses from the model.
 
-For each type of prompt, identical tasks are presented to the LLM to ensure that the only variable affecting output quality is the prompt construction itself. Tasks include generating text-based responses across several domains, such as summarizing passages, answering questions, and creating content based on given specifications.
+For each type of prompt, identical tasks are presented to the LLM to ensure that the only variable affecting output quality is the prompt construction itself. Tasks include generating text-based responses across several domains, such as summarising passages, answering questions, and creating content based on given specifications.
 
 #### Tools and Models
 
-The study utilizes OpenAI's GPT-3 model due to its widespread adoption and robust performance across a variety of natural language processing tasks. We interact with GPT-3 using the following tools:
+The study utilises OpenAI's GPT-3 model due to its widespread adoption and robust performance across a variety of natural language processing tasks. We interact with GPT-3 using the following tools:
 
 - **LangChain**: A Python library designed to facilitate the development of applications on top of LLMs. LangChain allows for structured interaction with GPT-3, managing prompt templates, and integrating response parsing mechanisms.
   
-- **Quarto**: To document and share our findings, we use Quarto, an interactive computing framework that allows embedding live code, visualizations, and narrative text. This choice supports the dynamic presentation of our methods and results, enabling readers to engage directly with the analyses.
+- **Quarto**: To document and share our findings, we use Quarto, an interactive computing framework that allows embedding live code, visualisations, and narrative text. This choice supports the dynamic presentation of our methods and results, enabling readers to engage directly with the analyses.
 
 #### Metrics for Evaluation
 
@@ -85,7 +84,7 @@ To objectively evaluate the quality of the responses generated by the LLM under 
 
 #### Data Collection and Analysis
 
-Responses from the LLM are collected under controlled conditions to ensure consistency across tests. Each response is logged along with the prompt used, allowing for detailed comparative analysis. The data are analyzed using statistical tools to identify significant differences in performance metrics between good and poor prompts. Visualizations are created to illustrate these differences clearly, providing both quantitative and qualitative insights into the effectiveness of various prompt engineering techniques.
+Responses from the LLM are collected under controlled conditions to ensure consistency across tests. Each response is logged along with the prompt used, allowing for detailed comparative analysis. The data are analysed using statistical tools to identify significant differences in performance metrics between good and poor prompts. Visualisations are created to illustrate these differences clearly, providing both quantitative and qualitative insights into the effectiveness of various prompt engineering techniques.
 
 #### Comparative Approach 
 
@@ -114,7 +113,7 @@ Citations:
 [5] https://typeset.io/questions/how-do-different-types-of-prompts-affect-the-quality-of-2rmbjrcisy
 
 
-Through this comprehensive methodology, the study aims to provide actionable insights into the art of prompt engineering, guiding users on how to best utilize LLMs for a range of applications.
+Through this comprehensive methodology, the study aims to provide actionable insights into the art of prompt engineering, guiding users on how to best utilise LLMs for a range of applications.
 
 
 Even without a predefined reference text, you can still compare the responses from a good prompt and a poor prompt using metrics like BERTScore or BLEU score. Here's how you can approach this:
@@ -150,27 +149,27 @@ Citations:
 
 ## Results
 
-This section presents the comprehensive results of our investigation into the effectiveness of prompt engineering techniques for enhancing the performance of large language models (LLMs). Our analysis focuses on quantitatively evaluating the impact of well-constructed versus poorly constructed prompts on the quality of the responses generated by LLMs. We utilize three established metrics for this evaluation: BLEU Score, ROUGE Score, and BERTscore, each providing insights into different aspects of text quality such as precision, recall, and semantic similarity. The results clearly demonstrate the significant influence that prompt construction can have on the accuracy, relevance, and fluency of the generated text. Additionally, we provide detailed, interactive examples that not only illustrate these effects but also allow readers to explore the nuances of prompt engineering through live code. These examples showcase practical applications and underscore the practical implications of our findings, bridging theoretical research with actionable insights. Through dynamic visualizations and interactive Quarto cells, readers are invited to engage directly with the data, enhancing their understanding of how strategic prompt design can be effectively utilized in real-world applications.
+This section presents the comprehensive results of our investigation into the effectiveness of prompt engineering techniques for enhancing the performance of large language models (LLMs). Our analysis focuses on quantitatively evaluating the impact of well-constructed versus poorly constructed prompts on the quality of the responses generated by LLMs. We utilise three established metrics for this evaluation: BLEU Score, ROUGE Score, and BERTscore, each providing insights into different aspects of text quality such as precision, recall, and semantic similarity. The results clearly demonstrate the significant influence that prompt construction can have on the accuracy, relevance, and fluency of the generated text. Additionally, we provide detailed, interactive examples that not only illustrate these effects but also allow readers to explore the nuances of prompt engineering through live code. These examples showcase practical applications and underscore the practical implications of our findings, bridging theoretical research with actionable insights. Through dynamic visualisations and interactive Quarto cells, readers are invited to engage directly with the data, enhancing their understanding of how strategic prompt design can be effectively utilised in real-world applications.
 
 ### Overview of Experimental Results
    - Begin with a summary of the findings from the comparative analysis of good vs. poor prompts. This would involve presenting quantitative data from BERTscore, Perplexity, and manual reviews.
    - Include charts, graphs, or tables that clearly depict the differences in LLM performance based on the type of prompt used.
-   - Compare the outputs and effectiveness of the LLM across different prompting techniques illustrated in the detailed examples and the case study. This section would analyze the broader implications of prompt engineering on practical applications.
+   - Compare the outputs and effectiveness of the LLM across different prompting techniques illustrated in the detailed examples and the case study. This section would analyse the broader implications of prompt engineering on practical applications.
    - Discuss how variations in prompt construction can lead to significant differences in output quality and application functionality.
 
 ### Detailed Examples of Good vs. Poor Prompts
 
-This section provides detailed descriptions and Python code examples for various prompt engineering tricks used to enhance the performance of large language models (LLMs). Each strategy is designed to optimize the interaction with LLMs in different contexts, demonstrating practical applications and potential benefits.
+This section provides detailed descriptions and Python code examples for various prompt engineering tricks used to enhance the performance of large language models (LLMs). Each strategy is designed to optimise the interaction with LLMs in different contexts, demonstrating practical applications and potential benefits.
 
 #### Strategy 1: Be Descriptive (More is Better)
-**Explanation**: Providing detailed information within prompts helps the LLM understand the context better, leading to more accurate and relevant responses. This strategy is particularly useful in scenarios where the details are critical to the task, such as generating personalized content or specific instructions.
+**Explanation**: Providing detailed information within prompts helps the LLM understand the context better, leading to more accurate and relevant responses. This strategy is particularly useful in scenarios where the details are critical to the task, such as generating personalised content or specific instructions.
 
 **Python Code Example**:
 ```python
 # Importing the OpenAI GPT library
 from openai import ChatCompletion
 
-# Initialize the model with your API key
+# Initialise the model with your API key
 openai_api_key = 'your-api-key'
 chat_model = ChatCompletion(api_key=openai_api_key, model="gpt-3.5-turbo")
 
@@ -199,7 +198,7 @@ Title: Advances in Renewable Energy
 Subtitle: Exploring the latest breakthroughs in sustainable power sources
 
 Title: The Future of AI in Medicine
-Subtitle: How AI is revolutionizing diagnostics and patient care
+Subtitle: How AI is revolutionising diagnostics and patient care
 
 Title: Innovations in Educational Technology
 Subtitle: New tools that are transforming how students learn
@@ -216,7 +215,7 @@ print(response['choices'][0]['message']['content'])
 ```
 
 #### Strategy 3: Use Structured Text
-**Explanation**: Structuring prompts in a clear and organized manner can help the model parse and process the information more effectively. This approach is ideal for tasks that require data extraction, summarization, or any application where clarity and precision are crucial.
+**Explanation**: Structuring prompts in a clear and organised manner can help the model parse and process the information more effectively. This approach is ideal for tasks that require data extraction, summarisation, or any application where clarity and precision are crucial.
 
 **Python Code Example**:
 ```python
@@ -267,7 +266,7 @@ print(response['choices'][0]['message']['content'])
 # Importing the OpenAI GPT library
 from openai import ChatCompletion
 
-# Initialize the model with your API key
+# Initialise the model with your API key
 openai_api_key = 'your-api-key'
 chat_model = ChatCompletion(api_key=openai_api_key, model="gpt-3.5-turbo")
 
@@ -341,9 +340,9 @@ poor_prompt = "What is relativity?"
 good_response = "The theory of relativity, proposed by Albert Einstein, revolves around two main ideas: special relativity and general relativity. Special relativity states that the laws of physics are the same for all non-accelerating observers, and that the speed of light in a vacuum is independent of the motion of all observers. General relativity describes gravity not as a force, but as a consequence of the curvature of spacetime caused by the presence of mass and energy."
 poor_response = "Relativity is a scientific theory developed by Albert Einstein."
 
-# Tokenize the responses
-good_response_tokens = nltk.word_tokenize(good_response)
-poor_response_tokens = nltk.word_tokenize(poor_response)
+# Tokenise the responses
+good_response_tokens = nltk.word_tokenise(good_response)
+poor_response_tokens = nltk.word_tokenise(poor_response)
 
 # Calculate BLEU scores
 bleu_score_good_as_ref = sentence_bleu([good_response_tokens], poor_response_tokens)
@@ -355,10 +354,10 @@ print(f"BLEU score (poor response as reference): {bleu_score_poor_as_ref:.3f}")
 
 Here's how the code works:
 
-1. We import the necessary modules and download the required NLTK data for tokenization.
+1. We import the necessary modules and download the required NLTK data for tokenisation.
 2. We define the good and poor prompts as strings.
 3. We obtain the responses from the language model for the good and poor prompts. In this example, we've hardcoded the responses, but in practice, you would replace these with your own code to generate responses from the language model.
-4. We tokenize the good and poor responses using `nltk.word_tokenize`.
+4. We tokenise the good and poor responses using `nltk.word_tokenise`.
 5. We calculate the BLEU scores in both directions:
    - `bleu_score_good_as_ref` treats the good prompt response as the reference and the poor prompt response as the candidate.
    - `bleu_score_poor_as_ref` treats the poor prompt response as the reference and the good prompt response as the candidate.
@@ -385,7 +384,7 @@ By comparing the BLEU scores in both directions, you can evaluate which prompt y
 
 #### ROUGE (Recall-Oriented Understudy for Gisting Evaluation) 
 
-The ROGUE score is a set of metrics used primarily for evaluating automatic summarization and machine translation. It measures the overlap between the system-generated text and reference texts, focusing on the number of overlapping units such as n-grams, word sequences, and word pairs. The most commonly used variants are ROUGE-N (which measures n-gram overlap), ROUGE-L (which measures the longest common subsequence), and ROUGE-S (which measures skip-bigram overlap).  Below, we implement the ROUGE-L score in Python to evaluate the quality of responses from language models. This will require the installation of the `rouge` package, which can be done using pip:
+The ROGUE score is a set of metrics used primarily for evaluating automatic summarisation and machine translation. It measures the overlap between the system-generated text and reference texts, focusing on the number of overlapping units such as n-grams, word sequences, and word pairs. The most commonly used variants are ROUGE-N (which measures n-gram overlap), ROUGE-L (which measures the longest common subsequence), and ROUGE-S (which measures skip-bigram overlap).  Below, we implement the ROUGE-L score in Python to evaluate the quality of responses from language models. This will require the installation of the `rouge` package, which can be done using pip:
 
 ```bash
 pip install rouge
@@ -398,7 +397,7 @@ Here’s an example of how you can calculate the ROUGE-L score for a language mo
 ```python
 from rouge import Rouge
 
-# Initialize the ROUGE scorer
+# Initialise the ROUGE scorer
 rouge = Rouge()
 
 # Example reference and system-generated summaries
@@ -427,7 +426,7 @@ print("ROUGE-L Score for System-Generated Summary 2:", scores_2[0]['rouge-l'])
 - **Contextual Relevance**: While ROUGE scores can provide objective measures of textual overlap, they might not fully account for the semantic accuracy or contextual relevance of the generated text. For more nuanced evaluations, consider combining ROUGE with manual qualitative assessments.
 - **Variants**: Depending on the specific requirements of your evaluation, you might choose different ROUGE metrics (like ROUGE-N for n-gram overlap, or ROUGE-S for skip-bigrams) to focus on different aspects of the comparison.
 
-This approach allows you to quantitatively assess how well a language model's responses match a reference, providing a standardized measure to compare different prompting strategies or model configurations in your research or application development.
+This approach allows you to quantitatively assess how well a language model's responses match a reference, providing a standardised measure to compare different prompting strategies or model configurations in your research or application development.
 
 ### Using BERTscore without a Predefined Reference
 
@@ -456,7 +455,7 @@ from bert_score import score
 
 # Assuming you've obtained responses from the model
 response_from_poor_prompt = "The quick brown fox tries to jump but fails."
-response_from_good_prompt = "The quick brown fox jumps over the lazy dog."
+response_from_good_prompt = "The quick brown fox jumps over the lasy dog."
 
 # Using each other as references
 P_poor, R_poor, F1_poor = score([response_from_poor_prompt], [response_from_good_prompt], lang="en")
@@ -480,14 +479,14 @@ print(f"Precision: {P_good.tolist()}, Recall: {R_good.tolist()}, F1 Score: {F1_g
 
 This method of using responses as mutual references can be particularly useful when direct comparison metrics are needed to evaluate the effectiveness of different prompts in eliciting detailed and relevant responses. It is somewhat subjective, as it assumes that one of the responses contains sufficient quality content to serve as a benchmark—a fair assumption if one prompt is indeed superior.
 
-By comparing these metrics, you can objectively analyze which prompt results in a better response in terms of information richness and relevance, thereby supporting the effectiveness of your prompt engineering techniques.
+By comparing these metrics, you can objectively analyse which prompt results in a better response in terms of information richness and relevance, thereby supporting the effectiveness of your prompt engineering techniques.
 
 
 
 ## Case Study: Building an Automatic Grader
 The practical application of prompt engineering is demonstrated through the development of an automatic grader for educational purposes. Using LangChain, a Python library for LLM integration, we construct a prompt-based system that evaluates student responses to open-ended questions. This system exemplifies the shift from traditional programming methods to a model where significant portions of logic are outsourced to an LLM, highlighting the efficiency and scalability of prompt engineering.
 
-This section provides a detailed guide to building an automatic grader application utilizing LangChain, a Python library designed to simplify the integration of large language models (LLMs) in application development. The application leverages prompt engineering to evaluate student responses in a high school history class, demonstrating the practical implementation of LLMs in educational settings.
+This section provides a detailed guide to building an automatic grader application utilising LangChain, a Python library designed to simplify the integration of large language models (LLMs) in application development. The application leverages prompt engineering to evaluate student responses in a high school history class, demonstrating the practical implementation of LLMs in educational settings.
 
 #### Overview
 The automatic grader application is designed to assess short-answer questions, where answers might vary but still be correct. The grader needs to handle different phrasings, synonyms, and minor spelling errors effectively.
@@ -529,9 +528,9 @@ Simple misspellings are okay.
 """
 ```
 
-**Step 3: Initialize LangChain**
+**Step 3: Initialise LangChain**
 ```python
-# Define and initialize the ChatOpenAI model with your OpenAI API key
+# Define and initialise the ChatOpenAI model with your OpenAI API key
 chat_model = ChatOpenAI(openai_api_key="your-openai-api-key", temperature=0)
 
 # Create a prompt template object
@@ -574,11 +573,11 @@ for student_answer in student_answers:
     print(f"Student Answer: {student_answer} - {'Correct' if result else 'Incorrect'}\n")
 ```
 
-This example application showcases how LangChain can be utilized to develop practical, LLM-integrated solutions for real-world problems such as grading. The automatic grader is not only efficient but also demonstrates the capability of LLMs to handle variability in natural language processing tasks, making it an ideal solution for educational applications.
+This example application showcases how LangChain can be utilised to develop practical, LLM-integrated solutions for real-world problems such as grading. The automatic grader is not only efficient but also demonstrates the capability of LLMs to handle variability in natural language processing tasks, making it an ideal solution for educational applications.
 
 
 ## Discussion: Efficacy and Limitations of Prompt Engineering
-While prompt engineering offers substantial advantages, including significant reductions in development time and increased flexibility, it is not without limitations. The effectiveness of prompt strategies can vary significantly between different LLM versions, and the approach may incur considerable computational costs. Furthermore, the general-purpose nature of large models like ChatGPT may not be optimal for specialized tasks, which could be better served by fine-tuning specific models tailored to particular needs.
+While prompt engineering offers substantial advantages, including significant reductions in development time and increased flexibility, it is not without limitations. The effectiveness of prompt strategies can vary significantly between different LLM versions, and the approach may incur considerable computational costs. Furthermore, the general-purpose nature of large models like ChatGPT may not be optimal for specialised tasks, which could be better served by fine-tuning specific models tailored to particular needs.
 
 ## Conclusion
 Prompt engineering represents a transformative approach to programming, enabling developers to harness the capabilities of LLMs in a user-friendly and cost-effective manner. As this field evolves, it is expected that the techniques and strategies of prompt engineering will become increasingly refined, paving the way for more sophisticated and integrated applications across various domains.
